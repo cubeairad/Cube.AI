@@ -1,2089 +1,2211 @@
 ﻿<!--
-  GitHub Pages setup: deploy this file as index.html on the main branch with Pages source set to /root.
-  No build step, no local assets, and all navigation stays on-anchor so it also works in a repo subpath.
+  CUBE AI — index.html
+  Single-file landing page for GitHub Pages deployment.
+
+  Asset folder structure (add later):
+    assets/
+      gifs/
+        landing_page.gif
+        literature_review.gif
+        playground_plan_steps_walkthrough.gif
+        Cohort_Selection_View.gif
+        segmentation_view.gif
+        feature_extraction_view.gif
+        Modeling_View.gif
+        execution_summary.gif
+        report_view.gif
+
+  All GIF references use: assets/gifs/[filename].gif
+  A CSS skeleton shimmer is shown until the image loads.
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CUBE AI — Intelligent Structure for Modern Work</title>
-  <meta name="description" content="CUBE AI brings structure, speed, and clarity to intelligent work. Join the early bird waiting list and be first to access a smarter AI workflow." />
-  <meta name="theme-color" content="#0a0e1a" />
-  <link rel="canonical" href="https://cube-ai.app/" />
-  <meta property="og:title" content="CUBE AI — Intelligent Structure for Modern Work" />
-  <meta property="og:description" content="CUBE AI brings structure, speed, and clarity to intelligent work. Join the early bird waiting list and be first to access a smarter AI workflow." />
+  <title>CUBE AI — Autonomous Radiology Research, Start to Manuscript</title>
+  <meta name="description" content="CUBE AI automates the full radiology research pipeline — from research question to peer-review-ready manuscript — in under one hour." />
+  <meta name="theme-color" content="#060a12" />
+  <link rel="canonical" href="https://ahmedxaldeeb.github.io/CUBEAI.github.io/" />
+  <meta property="og:title" content="CUBE AI — Autonomous Radiology Research" />
+  <meta property="og:description" content="From research question to manuscript in under one hour." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://cube-ai.app/" />
-  <meta property="og:image" content="https://cube-ai.app/og-image.png" />
+  <meta property="og:url" content="https://ahmedxaldeeb.github.io/CUBEAI.github.io/" />
+  <meta property="og:image" content="https://ahmedxaldeeb.github.io/CUBEAI.github.io/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="CUBE AI — Intelligent Structure for Modern Work" />
-  <meta name="twitter:description" content="CUBE AI brings structure, speed, and clarity to intelligent work. Join the early bird waiting list and be first to access a smarter AI workflow." />
-  <meta name="twitter:image" content="https://cube-ai.app/og-image.png" />
+  <meta name="twitter:title" content="CUBE AI — Autonomous Radiology Research" />
+  <meta name="twitter:description" content="From research question to manuscript in under one hour." />
+  <meta name="twitter:image" content="https://ahmedxaldeeb.github.io/CUBEAI.github.io/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <style>
+    /* ═══════════════════════════════════════════
+       CSS VARIABLES
+       ═══════════════════════════════════════════ */
     :root {
-      --bg: #0a0e1a;
-      --surface: #111827;
-      --border: #1e2d40;
-      --accent: #00d4ff;
-      --accent2: #0094b3;
-      --text: #e8edf5;
-      --muted: #6b7fa3;
-      --white: #ffffff;
-      --radius: 4px;
-      --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
-      --max: 1180px;
+      --bg: #060a12;
+      --surface: #0d1420;
+      --surface-2: #111d2e;
+      --border: #1a2a3d;
+      --accent: #00c8e0;
+      --accent-glow: rgba(0,200,224,0.15);
+      --accent-2: #0052cc;
+      --success: #00d4a0;
+      --text: #e2eaf4;
+      --text-2: #8097b1;
+      --red: #ff4d6d;
+      --max: 1200px;
       color-scheme: dark;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    /* ═══════════════════════════════════════════
+       RESET
+       ═══════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: 'DM Sans', system-ui, sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(0, 212, 255, 0.06), transparent 30%),
-        linear-gradient(180deg, #0a0e1a 0%, #0a0e1a 100%);
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
       color: var(--text);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
       overflow-x: hidden;
+      line-height: 1.6;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img, svg {
-      display: block;
-      max-width: 100%;
-    }
-
-    button,
-    input,
-    select {
-      font: inherit;
-    }
-
-    button {
-      border: 0;
-      background: none;
-      color: inherit;
-      cursor: pointer;
-    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    svg { display: block; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    button { border: 0; background: none; cursor: pointer; }
+    ul, ol { list-style: none; }
 
     :focus-visible {
       outline: 2px solid var(--accent);
-      outline-offset: 3px;
+      outline-offset: 2px;
     }
 
-    .skip-link {
-      position: absolute;
-      top: -48px;
-      left: 16px;
-      z-index: 9999;
-      padding: 12px 16px;
-      background: var(--accent);
-      color: #031017;
-      border-radius: var(--radius);
-      transition: top 0.2s ease;
-    }
-
-    .skip-link:focus-visible {
-      top: 16px;
-    }
-
-    .site-shell {
-      position: relative;
-      isolation: isolate;
-    }
-
-    .site-shell::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        radial-gradient(circle at 1px 1px, rgba(0, 212, 255, 0.14) 1px, transparent 1px),
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 28px 28px, 120px 120px, 120px 120px;
-      opacity: 0.35;
-      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 90%);
-      z-index: -2;
-    }
-
-    .container {
-      width: min(calc(100% - 32px), var(--max));
-      margin: 0 auto;
-    }
-
-    .section-shell {
-      padding: 112px 0;
-      position: relative;
-    }
-
+    /* ═══════════════════════════════════════════
+       UTILITY
+       ═══════════════════════════════════════════ */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
     .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0 0 18px;
-      font-size: 0.78rem;
-      letter-spacing: 0.22em;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      color: var(--text-2);
+      font-size: 1.05rem;
+      max-width: 560px;
     }
 
-    .section-label::before {
-      content: '';
-      width: 28px;
-      height: 1px;
-      background: linear-gradient(90deg, var(--accent), transparent);
-    }
-
-    h1, h2, h3, .brand, .eyebrow {
-      font-family: 'Syne', sans-serif;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(3rem, 6vw, 6.2rem);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: clamp(2rem, 3.8vw, 3.3rem);
-      line-height: 1.02;
-      letter-spacing: -0.03em;
-    }
-
-    p {
-      margin: 0;
-      line-height: 1.75;
-      color: var(--text);
-    }
-
-    .muted {
-      color: var(--muted);
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.86rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .eyebrow .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.6);
-      animation: pulse 2.2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.55); opacity: 0.85; }
-      70% { box-shadow: 0 0 0 16px rgba(0, 212, 255, 0); opacity: 1; }
-      100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0); opacity: 0.85; }
-    }
-
+    /* Reveal animation */
     .reveal {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(16px);
       transition: opacity 0.6s ease, transform 0.6s ease;
-      transition-delay: var(--delay, 0ms);
     }
-
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .site-header {
-      position: sticky;
+    /* ═══════════════════════════════════════════
+       HEADER
+       ═══════════════════════════════════════════ */
+    .header {
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
-      padding: 18px 0;
-      transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, padding 0.25s ease;
-      background: transparent;
+      padding: 16px 0;
+      transition: background 0.3s ease, border-color 0.3s ease, padding 0.3s ease;
+      border-bottom: 1px solid transparent;
     }
-
-    .site-header.scrolled {
-      background: rgba(17, 24, 39, 0.94);
-      border-bottom: 1px solid var(--border);
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
-      backdrop-filter: blur(14px);
+    .header.scrolled {
+      background: var(--surface);
+      border-bottom-color: var(--border);
       padding: 12px 0;
     }
-
-    .header-inner {
+    .header .container {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
     }
-
-    .brand {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 4px;
-      font-size: 1.5rem;
-      letter-spacing: -0.04em;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
       white-space: nowrap;
     }
+    .logo svg { flex-shrink: 0; }
+    .logo-cube { color: var(--accent); }
+    .logo-ai { color: var(--text); }
 
-    .brand .accent {
-      color: var(--accent);
-    }
-
-    .brand .text {
-      color: var(--text);
-    }
-
-    .desktop-nav {
+    .nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 32px;
     }
-
-    .desktop-nav a,
-    .mobile-nav a {
-      color: var(--muted);
+    .nav-links a {
+      font-size: 0.875rem;
       font-weight: 500;
-      transition: color 0.2s ease;
+      color: var(--text-2);
+      transition: color 0.2s;
     }
+    .nav-links a:hover { color: var(--text); }
 
-    .desktop-nav a:hover,
-    .mobile-nav a:hover {
-      color: var(--text);
+    .btn-access {
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 9px 20px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 3px;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
     }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 12px 18px;
-      border-radius: var(--radius);
-      border: 1px solid transparent;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-1px) scale(1.02);
-      box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.18), 0 12px 32px rgba(0, 212, 255, 0.12);
-    }
-
-    .button-primary {
+    .btn-access:hover {
       background: var(--accent);
-      color: #031117;
-      border-color: rgba(255, 255, 255, 0.08);
+      color: var(--bg);
     }
 
-    .button-primary:hover {
-      background: #2be0ff;
-    }
-
-    .button-ghost {
-      background: rgba(255, 255, 255, 0.02);
-      color: var(--text);
-      border-color: var(--border);
-    }
-
-    .icon-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.02);
-      color: var(--text);
-      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .icon-button:hover {
-      transform: translateY(-1px);
-      border-color: rgba(0, 212, 255, 0.45);
-      box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.15), 0 0 24px rgba(0, 212, 255, 0.16);
-    }
-
-    .mobile-toggle {
+    .hamburger {
       display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
     }
-
-    .mobile-nav-wrap {
-      display: none;
-      border-top: 1px solid transparent;
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.28s ease, border-color 0.28s ease;
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 1px;
+      transition: transform 0.3s, opacity 0.3s;
     }
-
-    .mobile-nav-wrap.open {
-      max-height: 360px;
-      border-color: var(--border);
-      margin-top: 14px;
-    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     .mobile-nav {
-      display: grid;
-      gap: 8px;
-      padding: 16px 0 0;
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
     }
-
+    .mobile-nav.open { display: flex; }
     .mobile-nav a {
-      display: flex;
-      align-items: center;
-      min-height: 44px;
-      padding: 8px 0;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--text-2);
+      transition: color 0.2s;
+    }
+    .mobile-nav a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
     }
 
+    /* ═══════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════ */
     .hero {
-      min-height: 100svh;
-      display: grid;
-      align-items: center;
       position: relative;
-      padding: 72px 0 92px;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(0, 212, 255, 0.08), transparent 28%),
-        radial-gradient(circle at 80% 20%, rgba(0, 148, 179, 0.08), transparent 22%),
-        linear-gradient(180deg, rgba(10, 14, 26, 0.98), rgba(10, 14, 26, 0.96));
-    }
-
-    .hero::before,
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .hero::before {
-      background-image:
-        radial-gradient(circle at 1px 1px, rgba(0, 212, 255, 0.18) 1px, transparent 1px),
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 34px 34px, 140px 140px, 140px 140px;
-      opacity: 0.5;
-      mask-image: radial-gradient(circle at 30% 40%, rgba(0, 0, 0, 1), transparent 78%);
-    }
-
-    .hero::after {
-      background: linear-gradient(180deg, transparent 60%, rgba(10, 14, 26, 0.88));
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
-      gap: 40px;
-      align-items: center;
-    }
-
-    .hero-copy {
-      max-width: 720px;
-      text-align: left;
-    }
-
-    .hero-copy p {
-      max-width: 620px;
-      font-size: 1.09rem;
-      color: #d5dfef;
-    }
-
-    .hero-copy .intro {
-      margin-top: 22px;
-    }
-
-    .hero-title {
-      margin-top: 18px;
-    }
-
-    .accent {
-      color: var(--accent);
-    }
-
-    .hero-actions {
+      min-height: 100vh;
       display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 30px;
-    }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px 18px;
-      margin-top: 20px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .hero-badges span {
-      display: inline-flex;
       align-items: center;
-      gap: 8px;
-    }
-
-    .hero-badges span::before {
-      content: '✦';
-      color: var(--accent);
-    }
-
-    .hero-visual {
-      position: relative;
-      min-height: 560px;
-    }
-
-    .cube-visual {
-      position: absolute;
-      inset: -20px -10px auto auto;
-      width: min(92%, 560px);
-      opacity: 0.96;
-      filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.08));
-      animation: float 20s ease-in-out infinite;
-    }
-
-    .float-cube {
-      position: absolute;
-      border: 1px solid rgba(0, 212, 255, 0.28);
-      background: rgba(17, 24, 39, 0.42);
-      box-shadow: inset 0 0 40px rgba(0, 212, 255, 0.05);
-      transform: rotate(45deg);
-      animation: drift 18s ease-in-out infinite;
-    }
-
-    .float-cube.one {
-      width: 92px;
-      height: 92px;
-      top: 54px;
-      right: 46px;
-      animation-delay: -2s;
-    }
-
-    .float-cube.two {
-      width: 58px;
-      height: 58px;
-      bottom: 64px;
-      left: 38px;
-      animation-delay: -7s;
-    }
-
-    .float-cube.three {
-      width: 74px;
-      height: 74px;
-      bottom: 168px;
-      right: 28px;
-      animation-delay: -11s;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) translateX(0); }
-      50% { transform: translateY(-10px) translateX(8px); }
-    }
-
-    @keyframes drift {
-      0%, 100% { transform: translateY(0) rotate(45deg); }
-      50% { transform: translateY(-12px) rotate(50deg); }
-    }
-
-    .panel,
-    .feature-card,
-    .problem-card,
-    .trust-card,
-    .faq-item,
-    .waitlist-form,
-    .success-panel,
-    .step-card {
-      background: rgba(17, 24, 39, 0.8);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-
-    .hero-panel {
-      margin-left: auto;
-      width: min(100%, 560px);
-      min-height: 500px;
-      border-radius: 0;
-      position: relative;
+      padding: 120px 0 80px;
       overflow: hidden;
-      padding: 28px;
-      background:
-        linear-gradient(135deg, rgba(0, 212, 255, 0.08), transparent 34%),
-        linear-gradient(180deg, rgba(17, 24, 39, 0.88), rgba(17, 24, 39, 0.7));
-      border-left: 1px solid rgba(0, 212, 255, 0.35);
     }
-
-    .hero-panel::before {
-      content: '';
+    .hero-slideshow {
       position: absolute;
-      inset: 20px;
-      border: 1px solid rgba(0, 212, 255, 0.12);
-      pointer-events: none;
-    }
-
-    .hero-panel .panel-lines {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(120deg, transparent 0 48%, rgba(0, 212, 255, 0.06) 49%, rgba(0, 212, 255, 0.12) 50%, transparent 51%),
-        linear-gradient(300deg, transparent 0 62%, rgba(0, 148, 179, 0.12) 63%, transparent 64%);
-      opacity: 0.55;
-      mix-blend-mode: screen;
-    }
-
-    .hero-panel .stack {
-      position: relative;
-      display: grid;
-      gap: 16px;
+      top: 0;
+      left: 0;
+      width: 100%;
       height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .hero-slideshow .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+    .hero-slideshow .slide.active { opacity: 1; }
+    .hero-slideshow .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(4px) brightness(0.35);
+      transform: scale(1.05);
+    }
+    @media (max-width: 900px) {
+      .hero-slideshow .slide img {
+        filter: blur(6px) brightness(0.25);
+      }
+    }
+    .hero .container {
+      position: relative;
       z-index: 1;
-    }
-
-    .stack-card {
-      border: 1px solid var(--border);
-      background: rgba(10, 14, 26, 0.78);
-      padding: 18px;
-      border-radius: 0;
-      border-left: 3px solid rgba(0, 212, 255, 0.9);
-      backdrop-filter: blur(10px);
-    }
-
-    .stack-card .eyebrow-mini {
-      display: inline-flex;
-      gap: 8px;
+      display: flex;
+      justify-content: flex-start;
       align-items: center;
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
+      min-height: 80vh;
+    }
+    .hero-content {
+      max-width: 600px;
+    }
+    @media (max-width: 900px) {
+      .hero .container {
+        justify-content: center;
+        text-align: center;
+      }
+      .hero-content { max-width: 100%; }
     }
 
-    .stack-card .eyebrow-mini::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: var(--accent);
-      box-shadow: 0 0 12px rgba(0, 212, 255, 0.5);
-    }
-
-    .stack-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .metric {
-      padding: 16px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      min-height: 110px;
-    }
-
-    .metric strong {
-      display: block;
-      font-family: 'Syne', sans-serif;
-      font-size: 1.16rem;
-      margin-bottom: 8px;
-    }
-
-    .metric p {
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
-    .angled-section {
-      clip-path: polygon(0 2.5%, 100% 0, 100% 97.5%, 0 100%);
-      margin: -2px 0;
-    }
-
-    .surface {
-      background: rgba(17, 24, 39, 0.88);
-    }
-
-    .section-grid {
-      display: grid;
-      gap: 24px;
-    }
-
-    .about-grid {
-      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-      align-items: center;
-    }
-
-    .about-copy p + p {
-      margin-top: 16px;
-    }
-
-    .cta-link {
+    .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-top: 22px;
-      color: var(--text);
-      font-weight: 700;
-    }
-
-    .cta-link span {
+      padding: 6px 14px;
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      background: var(--accent-glow);
+      font-size: 0.75rem;
+      font-weight: 600;
       color: var(--accent);
-      transition: transform 0.2s ease;
+      letter-spacing: 0.08em;
+      margin-bottom: 28px;
+    }
+    .eyebrow .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
     }
 
-    .cta-link:hover span {
-      transform: translateX(4px);
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.08;
+      margin-bottom: 24px;
+    }
+    .hero h1 .accent { color: var(--accent); }
+    @media (max-width: 900px) {
+      .hero h1 { text-align: center; }
     }
 
-    .about-visual {
-      min-height: 390px;
-      position: relative;
-      display: grid;
-      place-items: center;
+    .hero-sub {
+      color: var(--text-2);
+      font-size: 1.1rem;
+      max-width: 480px;
+      margin-bottom: 36px;
+      line-height: 1.65;
+    }
+    @media (max-width: 900px) {
+      .hero-sub { margin-left: auto; margin-right: auto; text-align: center; }
     }
 
-    .cube-stack {
-      position: relative;
-      width: min(100%, 420px);
-      aspect-ratio: 1;
-      filter: drop-shadow(0 0 22px rgba(0, 212, 255, 0.08));
-    }
-
-    .cube-stack .layer {
-      position: absolute;
-      inset: 0;
-      border: 1px solid rgba(0, 212, 255, 0.22);
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), transparent 56%);
-      clip-path: polygon(18% 14%, 66% 14%, 82% 30%, 34% 30%);
-      transform: translateY(0) skewX(-20deg);
-    }
-
-    .cube-stack .layer:nth-child(2) {
-      inset: 14%;
-      opacity: 0.8;
-      transform: translate(10px, 10px) skewX(-20deg) rotate(2deg);
-    }
-
-    .cube-stack .layer:nth-child(3) {
-      inset: 28%;
-      opacity: 0.65;
-      transform: translate(22px, 20px) skewX(-20deg) rotate(-2deg);
-    }
-
-    .cube-stack::after {
-      content: '';
-      position: absolute;
-      inset: 12% 10% 0;
-      border-left: 1px solid rgba(0, 212, 255, 0.25);
-      border-bottom: 1px solid rgba(0, 212, 255, 0.25);
-      transform: perspective(900px) rotateX(72deg) rotateZ(26deg);
-      opacity: 0.7;
-    }
-
-    .problem {
-      background: rgba(15, 21, 35, 0.95);
-      padding: 96px 0 92px;
-    }
-
-    .problem-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      align-items: stretch;
-      margin-top: 30px;
-    }
-
-    .problem-card {
-      padding: 24px;
-      border-radius: 0;
-      border-left: 3px solid var(--accent);
-      min-height: 210px;
-      display: grid;
+    .hero-ctas {
+      display: flex;
       gap: 14px;
-      background: rgba(17, 24, 39, 0.72);
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 900px) {
+      .hero-ctas { justify-content: center; }
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      padding: 13px 28px;
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 3px;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      padding: 13px 28px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      font-weight: 500;
+      font-size: 0.95rem;
+      border-radius: 3px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--text-2); color: var(--text); }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 900px) {
+      .hero-stats { justify-content: center; }
+    }
+    .hero-stats span {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-2);
+      letter-spacing: 0.02em;
     }
 
-    .card-icon {
-      width: 48px;
-      height: 48px;
-      display: inline-grid;
-      place-items: center;
-      border: 1px solid rgba(0, 212, 255, 0.5);
-      background: rgba(0, 212, 255, 0.08);
-      transform: rotate(45deg);
+    /* Pipeline animation in hero */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+    }
+    .pipeline-anim {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+      max-width: 340px;
+    }
+    .pipeline-step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-2);
+      transition: all 0.35s ease;
+      position: relative;
+    }
+    .pipeline-step.active {
+      background: var(--accent-glow);
+      border-color: var(--accent);
+      border-left-color: var(--accent);
+      color: var(--text);
+      box-shadow: 0 0 20px rgba(0,200,224,0.08);
+    }
+    .pipeline-step.done {
+      color: var(--text-2);
+    }
+    .pipeline-step .step-icon {
+      width: 18px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .pipeline-step .step-status {
+      margin-left: auto;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .pipeline-step .spinner {
+      width: 10px;
+      height: 10px;
+      border: 2px solid var(--accent);
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .pipeline-step .check {
+      color: var(--success);
+      font-size: 0.85rem;
+    }
+    .pipeline-arrow {
+      text-align: center;
+      color: var(--border);
+      font-size: 0.7rem;
+      line-height: 1;
+      padding: 0 0 0 20px;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 4: PROBLEM / OPPORTUNITY
+       ═══════════════════════════════════════════ */
+    .problem-section {
+      position: relative;
+      background: var(--surface);
+      padding: 100px 0;
+      clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+      margin-top: -40px;
+    }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .problem-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .stat-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 24px;
+      text-align: center;
+    }
+    .stat-card .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1.9rem;
       margin-bottom: 4px;
     }
-
-    .card-icon svg,
-    .feature-icon svg,
-    .social-icon svg {
-      width: 22px;
-      height: 22px;
-      transform: rotate(-45deg);
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 1.9;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .bridge {
-      margin-top: 28px;
-      max-width: 860px;
-      font-size: clamp(1.15rem, 2vw, 1.5rem);
-      color: #c8d6ea;
-    }
-
-    .features {
-      background: rgba(10, 14, 26, 0.98);
-    }
-
-    .features::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 160px 160px;
-      opacity: 0.5;
-      mask-image: linear-gradient(180deg, transparent, black 18%, black 82%, transparent);
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 30px;
-    }
-
-    .feature-card {
-      padding: 22px;
-      border-radius: 0;
-      min-height: 208px;
-      display: grid;
-      gap: 14px;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(0, 212, 255, 0.42);
-      box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.14), 0 16px 40px rgba(0, 212, 255, 0.08);
-    }
-
-    .feature-icon {
-      width: 52px;
-      height: 52px;
-      display: inline-grid;
-      place-items: center;
-      border: 1px solid rgba(0, 212, 255, 0.5);
-      background: rgba(0, 212, 255, 0.08);
-      transform: rotate(45deg);
-    }
-
-    .feature-card h3,
-    .problem-card h3,
-    .trust-card h3,
-    .step-card h3 {
-      margin: 0;
-      font-size: 1.18rem;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-    }
-
-    .feature-card p,
-    .problem-card p,
-    .trust-card p,
-    .step-card p {
-      color: var(--muted);
-    }
-
-    .how-it-works {
-      background: linear-gradient(180deg, rgba(11, 16, 29, 1), rgba(17, 24, 39, 1));
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 32px;
-      position: relative;
-    }
-
-    .steps::before {
-      content: '';
-      position: absolute;
-      left: 8%;
-      right: 8%;
-      top: 42px;
-      border-top: 1px dashed rgba(0, 212, 255, 0.42);
-      z-index: 0;
-    }
-
-    .step-card {
-      position: relative;
-      z-index: 1;
-      padding: 24px 22px;
-      min-height: 250px;
-      border-radius: 0;
-      overflow: hidden;
-    }
-
-    .step-card .step-number {
-      position: absolute;
-      right: 16px;
-      top: 12px;
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(5rem, 9vw, 7rem);
-      line-height: 1;
-      color: rgba(0, 212, 255, 0.08);
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .step-card .step-label {
-      color: var(--accent);
-      font-family: 'Syne', sans-serif;
-      text-transform: uppercase;
+    .stat-card .stat-label {
       font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      margin-bottom: 12px;
+      color: var(--text-2);
+    }
+    .stat-card.highlight .stat-num {
+      color: var(--accent);
+    }
+    .stat-card.highlight {
+      border-color: var(--accent);
+      background: var(--accent-glow);
+    }
+    .problem-text p {
+      color: var(--text-2);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+    .problem-text p:last-child {
+      color: var(--text);
+      font-weight: 500;
     }
 
-    .waitlist {
-      position: relative;
+    /* ═══════════════════════════════════════════
+       SECTION 5: PIPELINE EXPLORER
+       ═══════════════════════════════════════════ */
+    .pipeline-section {
+      background: var(--bg);
+      padding: 100px 0;
+    }
+    .pipeline-section .section-sub { margin-bottom: 48px; }
+    .pipeline-explorer {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 32px;
+      min-height: 480px;
+    }
+    @media (max-width: 900px) {
+      .pipeline-explorer { grid-template-columns: 1fr; }
+    }
+    .pipeline-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
       overflow: hidden;
-      background:
-        radial-gradient(circle at 50% 20%, rgba(0, 212, 255, 0.15), transparent 26%),
-        radial-gradient(circle at 50% 70%, rgba(0, 148, 179, 0.1), transparent 32%),
-        linear-gradient(180deg, rgba(12, 18, 33, 1), rgba(10, 14, 26, 1));
+    }
+    .pipeline-sidebar .auto-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      transition: opacity 0.3s;
+    }
+    .pipeline-sidebar .auto-badge .auto-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse-dot 1.5s ease-in-out infinite;
+    }
+    .pipeline-sidebar .auto-badge.paused { opacity: 0.3; }
+    .pipeline-sidebar .auto-badge.paused .auto-dot { animation: none; }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+      transition: all 0.2s;
+      font-size: 0.85rem;
+      color: var(--text-2);
+    }
+    .step-item:hover { background: var(--surface-2); color: var(--text); }
+    .step-item.active {
+      border-left-color: var(--accent);
+      background: var(--accent-glow);
+      color: var(--text);
+    }
+    .step-item .step-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: var(--text-2);
+      width: 22px;
+      flex-shrink: 0;
+    }
+    .step-item.active .step-num { color: var(--accent); }
+
+    .step-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    @media (max-width: 900px) {
+      .step-panel { display: none; }
+      .step-panel.mobile-active { display: flex; }
     }
 
-    .waitlist::before {
-      content: '';
+    .gif-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .gif-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      z-index: 2;
+    }
+    .gif-placeholder .shimmer {
       position: absolute;
       inset: 0;
-      pointer-events: none;
-      background: radial-gradient(circle at center, rgba(0, 212, 255, 0.16), transparent 44%);
-      opacity: 0.55;
-    }
-
-    .waitlist-inner {
-      position: relative;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+      background-size: 200% 100%;
+      animation: shimmer 1.8s ease-in-out infinite;
       z-index: 1;
-      display: grid;
-      justify-items: center;
-      text-align: center;
-    }
-
-    .waitlist-inner h2,
-    .waitlist-inner .muted,
-    .waitlist-inner .eyebrow {
-      max-width: 680px;
-    }
-
-    .perks {
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
       justify-content: center;
-      gap: 10px;
-      margin: 20px 0 28px;
+      font-size: 0.8rem;
+      color: var(--text-2);
     }
+    .gif-placeholder img.loaded ~ .shimmer { display: none; }
+    @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
 
-    .perk {
-      padding: 8px 12px;
-      border: 1px solid rgba(0, 212, 255, 0.22);
-      background: rgba(255, 255, 255, 0.03);
-      color: #d8e5f7;
-      border-radius: var(--radius);
-      font-size: 0.92rem;
-    }
-
-    .form-shell {
-      width: min(100%, 560px);
-      margin-top: 12px;
-      position: relative;
-    }
-
-    .waitlist-form,
-    .success-panel {
-      padding: 24px;
-      text-align: left;
-      border-left: 3px solid var(--accent);
-      background: rgba(17, 24, 39, 0.92);
-    }
-
-    .form-grid {
-      display: grid;
-      gap: 14px;
-    }
-
-    .field {
-      display: grid;
-      gap: 8px;
-    }
-
-    label {
+    .step-panel-title {
+      font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      color: #dfe8f7;
-      font-size: 0.95rem;
+      font-size: 1.2rem;
     }
-
-    .input,
-    .select {
-      width: 100%;
-      min-height: 48px;
-      padding: 13px 14px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: rgba(10, 14, 26, 0.8);
-      color: var(--text);
-      transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+    .step-panel-desc {
+      color: var(--text-2);
+      line-height: 1.7;
     }
-
-    .input::placeholder {
-      color: #7688ab;
-    }
-
-    .input:focus,
-    .select:focus {
-      border-color: rgba(0, 212, 255, 0.72);
-      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.12);
-      outline: none;
-    }
-
-    .form-actions {
-      display: grid;
-      gap: 12px;
-      margin-top: 6px;
-    }
-
-    .submit {
-      width: 100%;
-      min-height: 50px;
-      border-radius: var(--radius);
-      background: var(--accent);
-      color: #031117;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
-    }
-
-    .submit:hover {
-      transform: translateY(-1px);
-      background: #2be0ff;
-      box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.18), 0 16px 36px rgba(0, 212, 255, 0.15);
-    }
-
-    .submit:disabled {
-      opacity: 0.72;
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
-    }
-
-    .helper {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .error {
-      min-height: 22px;
-      color: #ff9ca9;
-      font-size: 0.94rem;
-      margin: 4px 0 0;
-    }
-
-    .success-panel {
-      display: none;
-      justify-content: center;
-      align-items: center;
-      min-height: 280px;
-      text-align: center;
-    }
-
-    .success-panel.visible-success {
-      display: grid;
-    }
-
-    .trust {
-      background: rgba(17, 24, 39, 0.9);
-    }
-
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 30px;
-    }
-
-    .trust-card {
-      padding: 22px;
-      min-height: 208px;
-      border-left: 3px solid rgba(0, 212, 255, 0.7);
-    }
-
-    .partner-row {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .partner-badge {
-      min-height: 56px;
+    .tech-badges {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      border: 1px dashed rgba(232, 237, 245, 0.22);
-      color: rgba(232, 237, 245, 0.56);
-      background: rgba(255, 255, 255, 0.02);
-      font-size: 0.88rem;
-      padding: 8px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .tech-badge {
+      padding: 4px 10px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text-2);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 3px;
     }
 
-    .faq {
-      background: rgba(10, 14, 26, 0.98);
+    /* ═══════════════════════════════════════════
+       SECTION 6: SAMPLE OUTPUT
+       ═══════════════════════════════════════════ */
+    .sample-section {
+      background: var(--surface);
+      padding: 100px 0;
     }
+    .sample-section .section-sub { margin-bottom: 48px; }
 
-    .faq-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 30px;
-    }
-
-    .faq-item {
-      border-radius: 0;
+    .pdf-viewer {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
       overflow: hidden;
-      background: rgba(17, 24, 39, 0.76);
-      transition: border-color 0.2s ease, background-color 0.2s ease;
+      max-width: 860px;
+      margin: 0 auto;
     }
-
-    .faq-item.active {
-      border-left: 3px solid var(--accent);
-      background: rgba(20, 29, 48, 0.96);
-    }
-
-    .faq-question {
-      width: 100%;
-      min-height: 56px;
+    .pdf-toolbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: 16px 20px;
-      text-align: left;
-      color: var(--text);
+      padding: 10px 16px;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--text-2);
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .pdf-toolbar .pdf-title { font-weight: 500; color: var(--text); }
+    .pdf-toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .pdf-toolbar .gen-time {
+      padding: 3px 8px;
+      background: var(--accent-glow);
+      border: 1px solid var(--accent);
+      border-radius: 3px;
+      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .pdf-toolbar .toolbar-btn {
+      padding: 4px 8px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--text-2);
+      font-size: 0.7rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .pdf-toolbar .toolbar-btn:hover { color: var(--text); border-color: var(--text-2); }
+
+    .pdf-content {
+      background: #ffffff;
+      color: #1a1a1a;
+      padding: 48px 40px;
+      max-height: 520px;
+      overflow: hidden;
+      position: relative;
+    }
+    @media (max-width: 600px) { .pdf-content { padding: 32px 20px; } }
+    .pdf-content h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.3rem;
+      text-align: center;
+      margin-bottom: 8px;
       font-weight: 700;
     }
+    .pdf-authors {
+      text-align: center;
+      font-size: 0.78rem;
+      color: #777;
+      margin-bottom: 20px;
+    }
+    .pdf-content hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 20px 0;
+    }
+    .pdf-content h4 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .pdf-abstract {
+      background: #f5f5f5;
+      padding: 20px 24px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    .pdf-abstract-label {
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+    .pdf-abstract p {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 0.88rem;
+      line-height: 1.65;
+      margin-bottom: 10px;
+      text-align: justify;
+      color: #333;
+    }
+    .pdf-abstract strong { color: #1a1a1a; }
+    .pdf-keywords {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 0.82rem;
+      color: #555;
+    }
+    .pdf-fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, #ffffff);
+      pointer-events: none;
+    }
+    .pdf-embed {
+      background: var(--bg);
+      border-radius: 0 0 6px 6px;
+      overflow: hidden;
+    }
+    .pdf-embed iframe {
+      display: block;
+    }
+    .pdf-read-more {
+      display: block;
+      margin: 32px auto 0;
+      padding: 12px 32px;
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 3px;
+      text-align: center;
+      width: fit-content;
+      transition: opacity 0.2s;
+    }
+    .pdf-read-more:hover { opacity: 0.85; }
 
-    .faq-question span:last-child {
-      flex: 0 0 auto;
+    .sample-stats {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+    .sample-stat {
+      padding: 8px 18px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-2);
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 7: FEATURES
+       ═══════════════════════════════════════════ */
+    .features-section {
+      background: var(--bg);
+      padding: 100px 0;
+    }
+    .features-section .section-sub { margin-bottom: 48px; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 900px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .features-grid { grid-template-columns: 1fr; } }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 28px;
+      transition: box-shadow 0.25s;
+    }
+    .feature-card:hover {
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+    .feature-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 16px;
       color: var(--accent);
-      transition: transform 0.2s ease;
+    }
+    .feature-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      color: var(--text-2);
+      font-size: 0.88rem;
+      line-height: 1.65;
     }
 
-    .faq-item.active .faq-question span:last-child {
-      transform: rotate(45deg);
+    /* ═══════════════════════════════════════════
+       SECTION 8: HOW IT WORKS
+       ═══════════════════════════════════════════ */
+    .how-section {
+      position: relative;
+      background: var(--surface);
+      padding: 100px 0;
+      clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+      margin-top: -40px;
+    }
+    .how-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 0;
+      align-items: start;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 900px) {
+      .how-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .how-step {
+      padding: 28px;
+      position: relative;
+    }
+    .how-step-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 3rem;
+      color: var(--accent);
+      opacity: 0.15;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .how-step h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+    .how-step p {
+      color: var(--text-2);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+    .how-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      padding-top: 40px;
+    }
+    @media (max-width: 900px) {
+      .how-arrow { display: none; }
+    }
+    .how-summary {
+      background: var(--bg);
+      border-left: 4px solid var(--accent);
+      border-radius: 4px;
+      padding: 24px;
+      font-size: 1rem;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+    .how-summary strong { color: var(--text); }
+
+    /* ═══════════════════════════════════════════
+       SECTION 9: EARLY ACCESS FORM
+       ═══════════════════════════════════════════ */
+    .access-section {
+      position: relative;
+      background: var(--bg);
+      padding: 100px 0;
+    }
+    .access-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+      pointer-events: none;
+    }
+    .access-inner {
+      position: relative;
+      max-width: 580px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .access-inner .section-label,
+    .access-inner .section-title,
+    .access-inner .section-sub {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .access-form {
+      margin-top: 40px;
+      text-align: left;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-2);
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 11px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text);
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238097b1' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-warning {
+      font-size: 0.75rem;
+      color: var(--red);
+      margin-top: 4px;
+      display: none;
     }
 
-    .faq-answer {
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-submit:hover { opacity: 0.85; }
+    .btn-submit .spinner-sm {
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--bg);
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+    .btn-submit.loading .spinner-sm { display: block; }
+    .btn-submit.loading .btn-text { display: none; }
+
+    .form-footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-2);
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+      margin-top: 40px;
+      background: var(--surface);
+      border: 1px solid var(--success);
+      border-radius: 6px;
+    }
+    .form-success.show { display: block; }
+    .form-success .success-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 16px;
+      color: var(--success);
+    }
+    .form-success h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+    .form-success p {
+      color: var(--text-2);
+      font-size: 0.9rem;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 10: TRUST
+       ═══════════════════════════════════════════ */
+    .trust-section {
+      background: var(--surface);
+      padding: 80px 0;
+    }
+    .trust-section .section-title { text-align: center; }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 768px) { .trust-grid { grid-template-columns: 1fr; } }
+    .trust-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 28px;
+    }
+    .trust-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+    .trust-card p {
+      color: var(--text-2);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+    .trust-strip {
+      background: var(--surface-2);
+      padding: 16px 24px;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-2);
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION 11: FAQ
+       ═══════════════════════════════════════════ */
+    .faq-section {
+      background: var(--bg);
+      padding: 100px 0;
+    }
+    .faq-section .section-title { text-align: center; }
+    .faq-list {
+      max-width: 700px;
+      margin: 40px auto 0;
+    }
+    .faq-item {
+      border-left: 3px solid transparent;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .faq-item.active {
+      border-left-color: var(--accent);
+      background: var(--surface);
+    }
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 18px 20px;
+      text-align: left;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--accent); }
+    .faq-chevron {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+      color: var(--text-2);
+    }
+    .faq-item.active .faq-chevron { transform: rotate(180deg); }
+    .faq-a {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.35s ease;
+      transition: max-height 0.35s ease, padding 0.35s ease;
     }
-
-    .faq-answer-inner {
+    .faq-item.active .faq-a {
+      max-height: 300px;
       padding: 0 20px 18px;
-      color: var(--muted);
+    }
+    .faq-a p {
+      color: var(--text-2);
+      font-size: 0.88rem;
       line-height: 1.7;
     }
 
-    .site-footer {
-      padding: 44px 0 28px;
-      background: rgba(17, 24, 39, 0.96);
+    /* ═══════════════════════════════════════════
+       SECTION 12: FOOTER
+       ═══════════════════════════════════════════ */
+    .footer {
+      background: var(--surface);
       border-top: 1px solid var(--border);
+      padding: 56px 0 0;
     }
-
-    .footer-top {
+    .footer-grid {
       display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr;
-      gap: 28px;
-      align-items: start;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
     }
-
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
     .footer-brand p {
-      margin-top: 10px;
-      color: var(--muted);
-      max-width: 320px;
+      color: var(--text-2);
+      font-size: 0.85rem;
+      margin-top: 12px;
+      line-height: 1.6;
     }
-
-    .footer-links {
-      display: grid;
-      gap: 10px;
+    .footer-brand .copyright {
+      font-size: 0.75rem;
+      margin-top: 16px;
     }
-
-    .footer-links a {
-      color: var(--muted);
-      transition: color 0.2s ease;
-    }
-
-    .footer-links a:hover {
+    .footer-col h4 {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
       color: var(--text);
+      margin-bottom: 16px;
     }
-
-    .social-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
+    .footer-col a {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-2);
+      padding: 4px 0;
+      transition: color 0.2s;
     }
-
+    .footer-col a:hover { color: var(--accent); }
     .footer-bottom {
+      background: var(--surface-2);
+      padding: 16px 24px;
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
       justify-content: space-between;
-      gap: 14px;
-      margin-top: 28px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(30, 45, 64, 0.7);
-      color: var(--muted);
-      font-size: 0.92rem;
+      font-size: 0.75rem;
+      color: var(--text-2);
+      flex-wrap: wrap;
+      gap: 8px;
     }
+    @media (max-width: 600px) { .footer-bottom { flex-direction: column; text-align: center; } }
 
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
+    /* ═══════════════════════════════════════════
+       NEW SECTIONS — Affiliations, Research, Team
+       ═══════════════════════════════════════════ */
+
+    /* Image skeleton shimmer */
+    .img-skeleton { position: relative; }
+    .img-skeleton .shimmer {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+      background-size: 200% 100%;
+      animation: shimmer 1.8s ease-in-out infinite;
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; color: var(--text-2);
+    }
+    .img-skeleton:not(.skeleton) .shimmer { display: none; }
+
+    /* ── A: AFFILIATIONS ── */
+    .affiliations-section { background: var(--surface); padding: 80px 0; }
+    .affil-sub-label {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text-2); margin-bottom: 16px;
+    }
+    .logo-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .logo-row.cols-2 { justify-content: center; }
+    .logo-row.cols-3 { justify-content: center; }
+    .logo-card {
+      flex: 1; min-width: 200px; max-width: 320px;
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 6px; padding: 32px 40px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 12px; transition: border-color 0.3s;
+    }
+    .logo-card:hover { border-color: var(--accent); }
+    .logo-card .logo-label {
+      font-size: 0.75rem; color: var(--text-2); text-align: center; line-height: 1.5;
+    }
+    .affil-divider { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+    .affil-strip {
+      background: var(--surface-2); border-left: 4px solid var(--accent);
+      border-radius: 4px; padding: 20px 28px; margin-top: 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .affil-strip-left { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 200px; }
+    .affil-strip-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0;
+    }
+    .affil-strip-text { font-size: 0.85rem; color: var(--text-2); line-height: 1.6; }
+    .affil-strip-badge {
+      padding: 6px 14px; font-size: 0.72rem; font-weight: 500;
+      color: var(--text-2); border: 1px solid var(--border); border-radius: 3px;
       white-space: nowrap;
-      border: 0;
     }
 
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.25), transparent);
-      margin: 28px 0;
+    /* ── B: RESEARCH CREDENTIALS ── */
+    .research-section { background: var(--bg); padding: 100px 0; }
+    .research-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;
+    }
+    @media (max-width: 900px) { .research-grid { grid-template-columns: 1fr; } }
+    .cred-stack { display: flex; flex-direction: column; gap: 20px; }
+    .cred-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-left: 3px solid var(--accent); border-radius: 6px; padding: 20px 24px;
+    }
+    .cred-label {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
+    }
+    .cred-card h3 {
+      font-size: 1rem; font-weight: 600; margin-bottom: 8px;
+    }
+    .cred-card p { color: var(--text-2); font-size: 0.88rem; line-height: 1.65; }
+    .cred-img {
+      width: 100%; max-height: 220px; object-fit: cover;
+      border-radius: 4px; margin-top: 12px; display: block;
+    }
+    .cred-img-contain {
+      width: 100%; max-height: 220px; object-fit: contain;
+      border-radius: 4px; margin-top: 12px; display: block;
+      background: var(--surface-2); padding: 12px;
     }
 
-    .noise {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.06;
-      mix-blend-mode: screen;
-      filter: url(#grain);
+    .sticky-panel {
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 6px; padding: 16px; position: sticky; top: 100px;
+    }
+    .sticky-panel-label {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-2); margin-bottom: 8px;
+    }
+    .sticky-panel-img {
+      width: 100%; max-height: 320px; object-fit: contain;
+      border-radius: 4px; background: var(--bg);
+    }
+    .sticky-panel h3 {
+      font-size: 0.95rem; font-weight: 600; margin-top: 16px; margin-bottom: 8px;
+    }
+    .sticky-panel p { color: var(--text-2); font-size: 0.82rem; line-height: 1.6; }
+    .tech-pill {
+      display: inline-block; margin-top: 12px; padding: 4px 12px;
+      font-size: 0.68rem; font-weight: 500; color: var(--accent);
+      background: var(--accent-glow); border: 1px solid var(--accent);
+      border-radius: 12px;
     }
 
-    @media (max-width: 1024px) {
-      .hero-inner,
-      .about-grid,
-      .footer-top {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-visual {
-        order: -1;
-        min-height: 440px;
-      }
-
-      .hero-panel {
-        margin-inline: auto;
-      }
-
-      .features-grid,
-      .trust-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .steps {
-        grid-template-columns: 1fr;
-      }
-
-      .steps::before {
-        display: none;
-      }
-
-      .partner-row {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+    /* ── C: TEAM ── */
+    .team-section { background: var(--surface); padding: 80px 0; }
+    .team-photo-block {
+      max-width: 900px; margin: 0 auto;
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 6px; padding: 8px;
     }
-
-    @media (max-width: 767px) {
-      .section-shell {
-        padding: 88px 0;
-      }
-
-      .header-inner {
-        gap: 12px;
-      }
-
-      .desktop-nav,
-      .header-actions .desktop-cta {
-        display: none;
-      }
-
-      .mobile-toggle {
-        display: inline-flex;
-      }
-
-      .mobile-nav-wrap {
-        display: block;
-      }
-
-      .hero {
-        padding-top: 52px;
-      }
-
-      .hero-inner {
-        gap: 24px;
-      }
-
-      .hero-panel {
-        width: 100%;
-        min-height: 380px;
-        padding: 18px;
-      }
-
-      .hero-copy p {
-        font-size: 1rem;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .hero-actions .button {
-        width: 100%;
-      }
-
-      .stack-grid,
-      .problem-grid,
-      .features-grid,
-      .trust-grid,
-      .partner-row {
-        grid-template-columns: 1fr;
-      }
-
-      .waitlist-form,
-      .success-panel,
-      .problem-card,
-      .feature-card,
-      .trust-card,
-      .step-card {
-        padding: 20px;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-      }
+    .team-photo-block img {
+      width: 100%; max-height: 480px; object-fit: cover;
+      object-position: center top; border-radius: 4px; display: block;
     }
+    .team-caption {
+      text-align: center; font-size: 0.82rem; color: var(--text-2);
+      font-style: italic; margin-top: 12px;
+    }
+    .team-two-col {
+      display: grid; grid-template-columns: 55% 1fr; gap: 24px;
+      margin-top: 32px;
+    }
+    @media (max-width: 768px) { .team-two-col { grid-template-columns: 1fr; } }
+    .team-two-col-label {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-2); margin-bottom: 8px;
+    }
+    .team-two-col img {
+      width: 100%; max-height: 300px; object-fit: cover;
+      border-radius: 4px; display: block;
+    }
+    .team-two-col h3 {
+      font-size: 0.88rem; font-weight: 600; margin-top: 12px; margin-bottom: 6px;
+    }
+    .team-two-col p { color: var(--text-2); font-size: 0.82rem; line-height: 1.6; }
+    .team-affil-strip {
+      background: var(--surface-2); padding: 20px 28px; margin-top: 32px;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    @media (max-width: 600px) { .team-affil-strip { justify-content: center; text-align: center; } }
+    .team-affil-center { font-size: 0.82rem; color: var(--text-2); text-align: center; line-height: 1.5; }
+    .team-affil-pills { display: flex; gap: 8px; flex-wrap: wrap; }
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="site-shell">
-    <svg class="sr-only" aria-hidden="true" focusable="false" width="0" height="0" viewBox="0 0 1 1">
-      <defs>
-        <filter id="grain">
-          <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch" />
-          <feColorMatrix type="saturate" values="0" />
-          <feComponentTransfer>
-            <feFuncA type="table" tableValues="0 0.35" />
-          </feComponentTransfer>
-        </filter>
-      </defs>
-    </svg>
 
-    <header class="site-header" id="site-header">
-      <div class="container">
-        <div class="header-inner">
-          <a class="brand" href="#hero" aria-label="CUBE AI home">
-            <span class="accent">CUBE</span><span class="text">AI</span>
-          </a>
+  <!-- ═══════════════════════════════════════════
+       HEADER
+       ═══════════════════════════════════════════ -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="#" class="logo">
+        <img src="assets/CUBEAI_logo.png" alt="CUBE AI" style="height:40px; object-fit:contain;" />
+      </a>
 
-          <nav class="desktop-nav" aria-label="Primary">
-            <a href="#about">About</a>
-            <a href="#features">Features</a>
-            <a href="#how-it-works">How It Works</a>
-            <a href="#waitlist">Early Bird</a>
-            <a href="#faq">FAQ</a>
-          </nav>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#features">Features</a>
+        <a href="#demo">Demo</a>
+        <a href="#research">Research</a>
+        <a href="#team">Team</a>
+        <a href="#early-access">Early Access</a>
+        <a href="#early-access" class="btn-access">Apply for Early Access</a>
+      </nav>
 
-          <div class="header-actions">
-            <a class="button button-primary desktop-cta trackable" href="#waitlist" data-track="header_waitlist">Join Waitlist</a>
-            <button class="icon-button mobile-toggle trackable" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-nav-wrap" data-track="menu_toggle">
-              <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                <path d="M4 7h16M4 12h16M4 17h16" />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div class="mobile-nav-wrap" id="mobile-nav-wrap">
-          <nav class="mobile-nav" aria-label="Mobile">
-            <a href="#about">About</a>
-            <a href="#features">Features</a>
-            <a href="#how-it-works">How It Works</a>
-            <a href="#waitlist">Early Bird</a>
-            <a href="#faq">FAQ</a>
-          </nav>
-        </div>
-      </div>
-    </header>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-    <main id="main">
-      <section class="hero" id="hero">
-        <div class="container hero-inner">
-          <div class="hero-copy">
-            <div class="eyebrow reveal visible" data-delay="0"><span class="dot" aria-hidden="true"></span>NOW IN EARLY ACCESS</div>
-            <h1 class="hero-title reveal visible" data-delay="100"><span class="accent">CUBE</span> AI brings structure<br />to intelligent work.</h1>
-            <p class="intro reveal visible" data-delay="200">A medical AI platform for radiologists: create, train, and deploy segmentation models directly from PACS with assisted annotation and self-configuring training.</p>
-            <div class="hero-actions reveal visible" data-delay="300">
-              <a class="button button-primary trackable" href="#waitlist" data-track="hero_waitlist">Join the Early Bird List</a>
-              <a class="button button-ghost trackable" href="#how-it-works" data-track="hero_how_it_works">See How It Works</a>
-            </div>
-            <div class="hero-badges reveal visible" data-delay="400" aria-label="Trust badges">
-              <span>PACS-ready (Orthanc)</span>
-              <span>Built for radiologists</span>
-              <span>Early access perks</span>
-            </div>
-          </div>
-
-          <div class="hero-visual" aria-hidden="true">
-            <div class="hero-panel reveal visible" data-delay="250">
-              <div class="panel-lines"></div>
-              <div class="stack">
-                <div class="stack-card">
-                  <div class="eyebrow-mini">Structured intelligence</div>
-                  <h3 style="margin-top:12px;">Designed around clarity.</h3>
-                  <p class="muted" style="margin-top:10px;">Outputs are organized, scannable, and ready to use in real workflows.</p>
-                </div>
-                <div class="stack-grid">
-                  <div class="metric">
-                    <strong>Focused</strong>
-                    <p>Built to reduce noise and keep the next step obvious.</p>
-                  </div>
-                  <div class="metric">
-                    <strong>Reliable</strong>
-                    <p>Every interaction is shaped for trust and consistency.</p>
-                  </div>
-                </div>
-                <div class="stack-card">
-                  <div class="eyebrow-mini">Early bird access</div>
-                  <p class="muted" style="margin-top:10px;">Join the list for first access, founding perks, and product updates.</p>
-                </div>
-              </div>
-            </div>
-
-            <svg class="cube-visual" viewBox="0 0 700 620" aria-hidden="true">
-              <g fill="none" stroke="rgba(0, 212, 255, 0.18)" stroke-width="2.5" stroke-linejoin="round">
-                <path d="M190 120 L350 38 L510 120 L350 202 Z" />
-                <path d="M190 120 L350 202 L350 390 L190 308 Z" />
-                <path d="M510 120 L350 202 L350 390 L510 308 Z" />
-                <path d="M190 120 L350 202 L510 120" />
-                <path d="M190 308 L350 390 L510 308" />
-                <path d="M350 202 L350 390" />
-                <path d="M250 86 L410 8 L570 86 L410 164 Z" opacity="0.32" />
-                <path d="M250 86 L410 164 L410 322 L250 244 Z" opacity="0.32" />
-                <path d="M570 86 L410 164 L410 322 L570 244 Z" opacity="0.32" />
-                <path d="M145 195 L270 130 L395 195 L270 260 Z" opacity="0.26" />
-                <path d="M145 195 L270 260 L270 410 L145 345 Z" opacity="0.26" />
-                <path d="M395 195 L270 260 L270 410 L395 345 Z" opacity="0.26" />
-              </g>
-            </svg>
-            <div class="float-cube one"></div>
-            <div class="float-cube two"></div>
-            <div class="float-cube three"></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-shell" id="about">
-        <div class="container section-grid about-grid">
-          <div class="about-copy">
-            <div class="section-label reveal" data-delay="0">Who We Are</div>
-            <h2 class="reveal" data-delay="100">Built to make AI feel practical.</h2>
-            <p class="reveal muted" data-delay="200">CUBE AI empowers radiologists and imaging teams to develop segmentation models using clinical DICOM studies fetched from PACS (Orthanc). Annotation is assisted by integrated foundation models to speed up label creation.</p>
-            <p class="reveal muted" data-delay="300">Training is fully automated via a self-configuring pipeline (nnU-Net + MONAI Label), validated for accuracy, and deployed to a secure model bank for immediate use in assisted segmentation workflows.</p>
-            <p class="reveal muted" data-delay="400">Designed for clinical workflows: secure PACS integration, metadata-backed datasets (PostgreSQL), and a web interface that removes the need for AI expertise.</p>
-            <a class="cta-link reveal trackable" href="#features" data-delay="500" data-track="about_features">Learn more about the product <span aria-hidden="true">→</span></a>
-          </div>
-
-          <div class="about-visual reveal" data-delay="200" aria-hidden="true">
-            <div class="cube-stack">
-              <div class="layer"></div>
-              <div class="layer"></div>
-              <div class="layer"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="problem angled-section" id="problem">
-        <div class="container section-shell" style="padding-top: 104px; padding-bottom: 100px;">
-          <div class="section-label reveal" data-delay="0">The Problem</div>
-          <h2 class="reveal" data-delay="100">Most AI tools create noise,<br />not clarity.</h2>
-          <div class="section-grid problem-grid">
-            <article class="problem-card reveal" data-delay="200">
-              <div class="card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M5 12h14M7.5 7.5l9 9M16.5 7.5l-9 9" /></svg>
-              </div>
-              <h3>Too much output, not enough structure</h3>
-              <p>AI tools produce walls of text with no hierarchy or organization, which makes it harder to act on what matters.</p>
-            </article>
-            <article class="problem-card reveal" data-delay="300">
-              <div class="card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M12 3l7 4v10l-7 4-7-4V7z" /><path d="M12 7v10" /></svg>
-              </div>
-              <h3>Hard to trust, hard to verify</h3>
-              <p>Outputs can feel unreliable and difficult to act on confidently, especially when the result needs to be used immediately.</p>
-            </article>
-            <article class="problem-card reveal" data-delay="400">
-              <div class="card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
-              </div>
-              <h3>Built for demos, not real workflows</h3>
-              <p>Many tools are impressive in screenshots but awkward in practice, forcing users to work around the product instead of with it.</p>
-            </article>
-          </div>
-          <p class="bridge reveal muted" data-delay="500">CUBE AI is designed differently. Every output is structured, every interaction is intentional.</p>
-          <a class="cta-link reveal trackable" href="#features" data-delay="600" data-track="problem_features">See the features <span aria-hidden="true">→</span></a>
-        </div>
-      </section>
-
-      <section class="section-shell features" id="features">
-        <div class="container">
-          <div class="section-label reveal" data-delay="0">What CUBE AI Does</div>
-          <h2 class="reveal" data-delay="100">Six things built right.</h2>
-          <div class="features-grid">
-            <article class="feature-card reveal" data-delay="200">
-              <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7h18v10H3z" /></svg></div>
-              <h3>PACS Integration</h3>
-              <p>Native DICOM support and integrations with Orthanc and OHIF let you fetch studies directly from PACS for annotation and training.</p>
-            </article>
-            <article class="feature-card reveal" data-delay="250">
-              <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v16M7 9l5-5 5 5" /></svg></div>
-              <h3>Assisted Annotation</h3>
-              <p>Interactive annotation tools powered by foundation models (SAM, Vista3D, nnInteractive) accelerate label creation with prompts and corrections.</p>
-            </article>
-            <article class="feature-card reveal" data-delay="300">
-              <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" /></svg></div>
-              <h3>Self-Configuring Training</h3>
-              <p>Automated training pipelines (nnU-Net + MONAI Label) configure experiments, run validation, and prepare models for deployment.</p>
-            </article>
-            <article class="feature-card reveal" data-delay="350">
-              <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v10l-8 4-8-4V7z" /></svg></div>
-              <h3>Model Bank & Deployment</h3>
-              <p>Store trained models centrally and deploy them for inference in assisted segmentation workflows with versioning.</p>
-            </article>
-            <article class="feature-card reveal" data-delay="400">
-              <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12l3 3 7-7" /></svg></div>
-              <h3>Clinical-Ready</h3>
-              <p>Privacy-first design, PostgreSQL-backed metadata, and audit-friendly workflows make CUBE AI suitable for clinical settings.</p>
-            </article>
-            <article class="feature-card reveal" data-delay="450">
-              <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h16" /><path d="M14 12l3 3 5-5" /></svg></div>
-              <h3>Easy Onboarding</h3>
-              <p>Web-based interface lets clinicians and imaging teams start quickly with no AI expertise required.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-shell how-it-works" id="how-it-works">
-        <div class="container">
-          <div class="section-label reveal" data-delay="0">How It Works</div>
-          <h2 class="reveal" data-delay="100">Three steps to get started.</h2>
-          <div class="steps">
-            <article class="step-card reveal" data-delay="200">
-              <div class="step-number" aria-hidden="true">01</div>
-              <div class="step-label">Connect PACS & Select Studies</div>
-              <h3>Point CUBE AI at Orthanc or your DICOM archive.</h3>
-              <p>Search and select retrospective cases for research with full DICOM metadata preserved.</p>
-            </article>
-            <article class="step-card reveal" data-delay="300">
-              <div class="step-number" aria-hidden="true">02</div>
-              <div class="step-label">Annotate & Train</div>
-              <h3>Use assisted annotation and self-configuring training.</h3>
-              <p>Accelerate label creation with foundation models (SAM) and run automated experiments using nnU-Net + MONAI.</p>
-            </article>
-            <article class="step-card reveal" data-delay="400">
-              <div class="step-number" aria-hidden="true">03</div>
-              <div class="step-label">Validate & Publish</div>
-              <h3>Validate experiments and publish to the model bank.</h3>
-              <p>Store reproducible models for benchmarking, inference, or multi-center evaluation.</p>
-            </article>
-          </div>
-          <div style="margin-top: 28px;">
-            <a class="button button-primary trackable reveal" href="#waitlist" data-delay="500" data-track="how_waitlist">Reserve Your Spot Now</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-shell research" id="research">
-        <div class="container">
-          <div class="section-label reveal" data-delay="0">Research Use Cases</div>
-          <h2 class="reveal" data-delay="100">Built for radiology research and reproducible experiments</h2>
-          <p class="muted reveal" data-delay="150">Use CUBE AI to accelerate retrospective studies, benchmark models, and scale multi-site validation with DICOM-native workflows and reproducible training.</p>
-
-          <div class="problem-grid reveal" data-delay="200" style="margin-top:24px;">
-            <article class="problem-card">
-              <div class="card-icon" aria-hidden="true">📁</div>
-              <h3>Dataset Curation</h3>
-              <p>Pull studies from Orthanc, filter by metadata, and build clean, provenance-backed datasets for research without manual exports.</p>
-            </article>
-            <article class="problem-card">
-              <div class="card-icon" aria-hidden="true">✍️</div>
-              <h3>Efficient Labelling</h3>
-              <p>Combine foundation models (SAM) with human correction to generate high-quality labels far faster than manual annotation alone.</p>
-            </article>
-            <article class="problem-card">
-              <div class="card-icon" aria-hidden="true">🧪</div>
-              <h3>Automated Experiments</h3>
-              <p>Self-configuring nnU-Net training runs experiments with standardized splits and metrics so results are reproducible across runs.</p>
-            </article>
-            <article class="problem-card">
-              <div class="card-icon" aria-hidden="true">📊</div>
-              <h3>Benchmarking & Validation</h3>
-              <p>Publish trained models to the model bank, version them, and compare performance across cohorts and sites for robust validation.</p>
-            </article>
-            <article class="problem-card">
-              <div class="card-icon" aria-hidden="true">🔐</div>
-              <h3>Data Governance</h3>
-              <p>Metadata stored in PostgreSQL and labels pushed back to PACS preserve audit trails and clinical provenance for research audits.</p>
-            </article>
-            <article class="problem-card">
-              <div class="card-icon" aria-hidden="true">🏁</div>
-              <h3>Example Result</h3>
-              <p>On the LITS dataset, a model trained via CUBE AI achieved a Dice score of 0.84 using prompt-based annotations from SAM — demonstrating practical, reproducible performance.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-shell agentic" id="agentic">
-        <div class="container">
-          <div class="section-label reveal" data-delay="0">Agentic Research</div>
-          <h2 class="reveal" data-delay="100">Agentic orchestration for reproducible experiments</h2>
-          <p class="muted reveal" data-delay="150">CUBE AI coordinates the full research loop as an agentic system: from PACS ingestion to annotation, self-configuring training, validation, and model publication — all tracked and auditable.</p>
-
-          <div class="section-grid reveal" data-delay="200" style="margin-top:22px; gap:18px;">
-            <article class="panel">
-              <h3>Autonomous Data Preparation</h3>
-              <p class="muted">Automatically fetch studies from Orthanc via DICOMweb, extract metadata, apply inclusion/exclusion filters, and prepare training-ready datasets with provenance metadata stored in PostgreSQL.</p>
-            </article>
-            <article class="panel">
-              <h3>Assisted Annotation</h3>
-              <p class="muted">Invoke foundation models (SAM, Vista3D, nnInteractive) to propose labels, accept human corrections, and cache embeddings to speed up iterative labelling workflows.</p>
-            </article>
-            <article class="panel">
-              <h3>Self-Configuring Training</h3>
-              <p class="muted">The system fingerprints the dataset and configures nnU-Net/MONAI experiments (preprocessing, augmentation, network topology) automatically, then schedules and monitors training runs.</p>
-            </article>
-            <article class="panel">
-              <h3>Validation & Reproducibility</h3>
-              <p class="muted">Experimental splits, metrics (Dice, IoU), and logs are recorded for reproducible benchmarking; trained models are versioned in the model bank for multi-site evaluation.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-shell demo" id="demo">
-        <div class="container">
-          <div class="section-label reveal" data-delay="0">Demo</div>
-          <h2 class="reveal" data-delay="100">See it on your data</h2>
-          <p class="muted reveal" data-delay="150">Request a guided demo and we'll walk your team through PACS integration, assisted annotation, and an end-to-end training run using your de-identified studies.</p>
-          <div style="margin-top:18px;">
-            <a class="button button-ghost trackable reveal" href="#waitlist" data-delay="200" data-track="demo_request">Request a Demo</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-shell team" id="team">
-        <div class="container">
-          <div class="section-label reveal" data-delay="0">Team & Collaboration</div>
-          <h2 class="reveal" data-delay="100">Small team, clinical focus</h2>
-          <p class="muted reveal" data-delay="150">We are a focused group of engineers and clinicians building tools to make clinical AI reproducible and practical. We welcome collaborators, contributors, and research partners.</p>
-          <div class="trust-grid" style="margin-top:20px;">
-            <article class="trust-card reveal" data-delay="200">
-              <h3>Engineering</h3>
-              <p>Backend, training orchestration, and model lifecycle engineering (MONAI, nnU-Net, deployment).</p>
-            </article>
-            <article class="trust-card reveal" data-delay="300">
-              <h3>Clinical Research</h3>
-              <p>Radiology workflows, annotation design, and clinical validation to keep the product grounded in real needs.</p>
-            </article>
-            <article class="trust-card reveal" data-delay="400">
-              <h3>Open Collaboration</h3>
-              <p>Contribute on GitHub or open an issue to discuss integration, evaluation, or partnership opportunities.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-shell waitlist" id="waitlist">
-        <div class="container waitlist-inner">
-          <div class="eyebrow reveal" data-delay="0"><span class="dot" aria-hidden="true"></span>Early Bird Access</div>
-          <h2 class="reveal" data-delay="100">Be first. Get more.</h2>
-          <p class="muted reveal" data-delay="200">Join the waiting list — designed for radiologists, imaging teams, and clinical AI groups. Get early PACS integration and model access.</p>
-          <div class="perks reveal" data-delay="250" aria-label="Waiting list perks">
-            <span class="perk">✓ Priority PACS integrations</span>
-            <span class="perk">✓ Founding member status</span>
-            <span class="perk">✓ Early model bank access</span>
-          </div>
-
-          <div class="form-shell reveal" data-delay="300">
-            <form class="waitlist-form" id="waitlist-form" novalidate>
-              <div class="form-grid">
-                <div class="field">
-                  <label for="name">Full Name</label>
-                  <input class="input" id="name" name="name" type="text" autocomplete="name" required />
-                </div>
-                <div class="field">
-                  <label for="email">Email Address</label>
-                  <input class="input" id="email" name="email" type="email" autocomplete="email" required />
-                </div>
-                <div class="field">
-                  <label for="company">Company Name</label>
-                  <input class="input" id="company" name="company" type="text" autocomplete="organization" />
-                </div>
-                <div class="field">
-                  <label for="role">Role / Use Case</label>
-                  <select class="select" id="role" name="role">
-                    <option value="">Select an option</option>
-                    <option>Radiologist</option>
-                    <option>Imaging Team / Technologist</option>
-                    <option>Clinical AI / Researcher</option>
-                    <option>IT / PACS Admin</option>
-                    <option>Developer</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-actions">
-                <button class="submit trackable" type="submit" id="submit-button" data-track="waitlist_submit">Join the Early Bird List</button>
-                <div class="error" id="form-error" role="alert" aria-live="polite"></div>
-                <p class="helper">We respect your privacy. No spam, ever. Unsubscribe anytime.</p>
-              </div>
-            </form>
-
-            <div class="success-panel" id="success-panel" aria-live="polite" aria-atomic="true">
-              <div>
-                <div class="eyebrow" style="justify-content:center;"><span class="dot" aria-hidden="true"></span>You're In</div>
-                <h3 style="margin: 16px 0 10px; font-size: 1.8rem;">You're on the list.</h3>
-                <p class="muted">✦ We'll be in touch soon with your early access details.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-shell trust" id="trust">
-        <div class="container">
-          <div class="section-label reveal" data-delay="0">Trust</div>
-          <h2 class="reveal" data-delay="100">Built with care. Designed for trust.</h2>
-          <div class="trust-grid">
-            <article class="trust-card reveal" data-delay="200">
-              <h3>Privacy First</h3>
-              <p>Clinical data stays under your control. Integrations push labels back to PACS and metadata is stored securely (PostgreSQL-backed).</p>
-            </article>
-            <article class="trust-card reveal" data-delay="300">
-              <h3>Early User Focus</h3>
-              <p>We partner with early clinical teams to shape priorities — PACS workflows, annotation ergonomics, and real-world validation come first.</p>
-            </article>
-            <article class="trust-card reveal" data-delay="400">
-              <h3>Proven Foundations</h3>
-              <p>Built on open-source components and validated tools (Orthanc, OHIF, MONAI, nnU-Net) so you get reproducible, explainable results.</p>
-            </article>
-          </div>
-
-          <div class="divider"></div>
-          <p class="section-label reveal" data-delay="450" style="margin-bottom: 14px;">Partner TBD</p>
-          <div class="partner-row">
-            <div class="partner-badge">Orthanc (PACS)</div>
-            <div class="partner-badge">OHIF Viewer</div>
-            <div class="partner-badge">MONAI / nnU-Net</div>
-            <div class="partner-badge">PostgreSQL</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-shell faq" id="faq">
-        <div class="container">
-          <div class="section-label reveal" data-delay="0">FAQ</div>
-          <h2 class="reveal" data-delay="100">Questions, answered clearly.</h2>
-          <div class="faq-list" id="faq-list">
-            <div class="faq-item reveal" data-delay="200">
-              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">
-                <span>What is CUBE AI?</span><span aria-hidden="true">+</span>
-              </button>
-              <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1">
-                <div class="faq-answer-inner">CUBE AI is an AI-powered product designed to bring structure, speed, and clarity to intelligent work. It helps users get better results with less effort.</div>
-              </div>
-            </div>
-            <div class="faq-item reveal" data-delay="250">
-              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
-                <span>Who is CUBE AI for?</span><span aria-hidden="true">+</span>
-              </button>
-              <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2">
-                <div class="faq-answer-inner">CUBE AI is designed for radiologists, imaging teams, and clinical AI groups who need practical segmentation tools, PACS integration, and deployable models — no AI expertise required.</div>
-              </div>
-            </div>
-            <div class="faq-item reveal" data-delay="300">
-              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
-                <span>When will early access open?</span><span aria-hidden="true">+</span>
-              </button>
-              <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3">
-                <div class="faq-answer-inner">We are actively building toward our first release. Early bird members will be notified first and will receive priority access before the public launch.</div>
-              </div>
-            </div>
-            <div class="faq-item reveal" data-delay="350">
-              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">
-                <span>Is joining the waiting list free?</span><span aria-hidden="true">+</span>
-              </button>
-              <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4">
-                <div class="faq-answer-inner">Yes. Joining is completely free. There is no credit card required and no commitment.</div>
-              </div>
-            </div>
-            <div class="faq-item reveal" data-delay="400">
-              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">
-                <span>How will my data be used?</span><span aria-hidden="true">+</span>
-              </button>
-              <div class="faq-answer" id="faq-a5" role="region" aria-labelledby="faq-q5">
-                <div class="faq-answer-inner">Your email will only be used to notify you about early access and CUBE AI updates. We will never sell, share, or misuse your information.</div>
-              </div>
-            </div>
-            <div class="faq-item reveal" data-delay="450">
-              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a6" id="faq-q6">
-                <span>Can I give feedback before launch?</span><span aria-hidden="true">+</span>
-              </button>
-              <div class="faq-answer" id="faq-a6" role="region" aria-labelledby="faq-q6">
-                <div class="faq-answer-inner">Yes. Early bird members will have a direct line to the product team. Your feedback will shape what we build next.</div>
-              </div>
-            </div>
-            <div class="faq-item reveal" data-delay="500">
-              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a7" id="faq-q7">
-                <span>How does the agentic research system work?</span><span aria-hidden="true">+</span>
-              </button>
-              <div class="faq-answer" id="faq-a7" role="region" aria-labelledby="faq-q7">
-                <div class="faq-answer-inner">CUBE AI orchestrates tasks: fetch studies from PACS, propose labels using foundation models, build dataset fingerprints, run self-configured nnU-Net/MONAI experiments, validate results, and publish versioned models to the model bank.</div>
-              </div>
-            </div>
-            <div class="faq-item reveal" data-delay="550">
-              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a8" id="faq-q8">
-                <span>Which foundation models are integrated?</span><span aria-hidden="true">+</span>
-              </button>
-              <div class="faq-answer" id="faq-a8" role="region" aria-labelledby="faq-q8">
-                <div class="faq-answer-inner">CUBE AI integrates SAM, Vista3D, and nnInteractive for prompt-based and interactive annotation. These are optimized to operate on medical volumes without unnecessary DICOM conversions.</div>
-              </div>
-            </div>
-            <div class="faq-item reveal" data-delay="600">
-              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a9" id="faq-q9">
-                <span>Can CUBE AI run on-premises for research?</span><span aria-hidden="true">+</span>
-              </button>
-              <div class="faq-answer" id="faq-a9" role="region" aria-labelledby="faq-q9">
-                <div class="faq-answer-inner">Yes. The platform is designed to work with local Orthanc deployments and PostgreSQL metadata stores, enabling on-premises research workflows that keep data within institutional boundaries.</div>
-              </div>
-            </div>
-            <div class="faq-item reveal" data-delay="650">
-              <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a10" id="faq-q10">
-                <span>How are models validated and tracked?</span><span aria-hidden="true">+</span>
-              </button>
-              <div class="faq-answer" id="faq-a10" role="region" aria-labelledby="faq-q10">
-                <div class="faq-answer-inner">Training runs include standardized splits and metrics (e.g., Dice), and all runs, configurations, and logs are recorded for reproducibility and auditability. Trained models are versioned in the model bank for comparison and deployment.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-top">
-          <div class="footer-brand">
-            <a class="brand" href="#hero" aria-label="CUBE AI home">
-              <span class="accent">CUBE</span><span class="text">AI</span>
-            </a>
-            <p>Structure. Precision. Intelligence.</p>
-          </div>
-
-          <div class="footer-links" aria-label="Footer links">
-            <a href="#about">About</a>
-            <a href="#features">Features</a>
-            <a href="#how-it-works">How It Works</a>
-            <a href="#research">Research</a>
-            <a href="#agentic">Agentic</a>
-            <a href="#demo">Demo</a>
-            <a href="#team">Team</a>
-            <a href="#waitlist">Early Bird</a>
-          </div>
-
-          <div>
-            <div class="footer-links" aria-label="Additional links">
-              <a href="#faq">FAQ</a>
-              <a href="#">Privacy Policy</a>
-              <a href="mailto:hello@cube-ai.app">Contact</a>
-            </div>
-            <div class="social-row" aria-label="Social links">
-              <a class="icon-button social-icon" href="#" aria-label="LinkedIn">
-                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6.5 9v9M6.5 6.2v.1M10.5 18v-5.2c0-1.9 1-3 2.7-3s2.6 1.1 2.6 3V18" /><path d="M17.8 9v9" /></svg>
-              </a>
-              <a class="icon-button social-icon" href="#" aria-label="Twitter X">
-                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 5l6.5 7L4 19h3l5.2-5.7L17.1 19H20l-6.8-7.3L19.4 5h-3l-4.8 5.2L7.1 5z" /></svg>
-              </a>
-              <a class="icon-button social-icon" href="#" aria-label="GitHub">
-                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 19c-4 1.2-4-2-5.6-2.4M15 21v-3.2c0-.9.3-1.6.8-2-2.7-.3-5.5-1.4-5.5-6.1 0-1.3.5-2.4 1.3-3.3-.1-.4-.6-1.8.1-3.6 0 0 1.1-.4 3.6 1.3a12.4 12.4 0 0 1 6.5 0C22.8 4.4 24 4.8 24 4.8c.7 1.8.2 3.2.1 3.6.8.9 1.3 2 1.3 3.3 0 4.8-2.8 5.8-5.5 6.1.5.5.9 1.2.9 2.4V21" /></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <div>© 2025 CUBE AI. All rights reserved.</div>
-          <div>Built for early adopters.</div>
-        </div>
-      </div>
-    </footer>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#pipeline" class="mobile-nav-link">Pipeline</a>
+    <a href="#features" class="mobile-nav-link">Features</a>
+    <a href="#demo" class="mobile-nav-link">Demo</a>
+    <a href="#research" class="mobile-nav-link">Research</a>
+    <a href="#team" class="mobile-nav-link">Team</a>
+    <a href="#early-access" class="mobile-nav-link">Early Access</a>
+    <a href="#early-access" class="btn-access mobile-nav-link">Apply for Early Access</a>
   </div>
 
+  <!-- ═══════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-slideshow" id="heroSlideshow" aria-hidden="true">
+      <div class="slide active"><img src="assets/gifs/landing_page.gif" alt="" /></div>
+      <div class="slide"><img src="assets/gifs/segmentation_view.gif" alt="" /></div>
+      <div class="slide"><img src="assets/gifs/interactive_segmentation.gif" alt="" /></div>
+      <div class="slide"><img src="assets/gifs/Cohort_Selection_View.gif" alt="" /></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="eyebrow"><span class="dot"></span> MICCAI 2026  ·  ISF FUNDED  ·  EARLY ACCESS OPEN</div>
+        <h1>Your Hypothesis.<br>A Complete Study.<br><span class="accent">53 Minutes.</span></h1>
+        <p class="hero-sub">CUBE AI is an autonomous radiology research platform built at Cairo University. Define a research question. The pipeline executes literature review, cohort assembly, segmentation, radiomic feature extraction, model training, and manuscript generation — without manual intervention.</p>
+        <div class="hero-ctas">
+          <a href="#early-access" class="btn-primary">Apply for Early Access</a>
+          <a href="#pipeline" class="btn-ghost">See the Pipeline</a>
+        </div>
+        <div class="hero-stats">
+          <span>10 Autonomous Steps</span>
+          <span>&lt;60 Min End-to-End</span>
+          <span>Peer-Review–Ready PDF</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PROBLEM / OPPORTUNITY
+       ═══════════════════════════════════════════ -->
+  <section class="problem-section" id="about">
+    <div class="container">
+      <div class="problem-grid">
+        <div class="stat-grid reveal">
+          <div class="stat-card">
+            <div class="stat-num">2–4 Years</div>
+            <div class="stat-label">Avg. radiology study timeline</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">6–12 Months</div>
+            <div class="stat-label">Literature review alone</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">40+</div>
+            <div class="stat-label">Manual pipeline steps</div>
+          </div>
+          <div class="stat-card highlight">
+            <div class="stat-num">&lt;1 Hour</div>
+            <div class="stat-label">With CUBE AI</div>
+          </div>
+        </div>
+        <div class="problem-text reveal" data-delay="200">
+          <div class="section-label">THE BOTTLENECK</div>
+          <h2 class="section-title">Most radiology research dies in the pipeline, not the lab.</h2>
+          <p>A valid hypothesis reaches a radiologist's desk. Then months pass. Literature must be searched and ranked manually. PACS databases queried with custom scripts. Cohorts assembled case by case. Annotations drawn by hand. Features engineered from scratch. Each step requires a different specialist, a different tool, and weeks of waiting.</p>
+          <p>This is not a science problem. Radiology has no shortage of testable hypotheses. It has a critical shortage of infrastructure to test them. The majority of research ideas are quietly abandoned — not because they were wrong, but because executing them was impractical.</p>
+          <p>CUBE AI is the infrastructure layer that was missing. The scientific judgment stays with the radiologist. Every step between hypothesis and manuscript becomes autonomous.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PIPELINE EXPLORER
+       ═══════════════════════════════════════════ -->
+  <section class="pipeline-section" id="pipeline">
+    <div class="container">
+      <div class="section-label reveal">AUTONOMOUS PIPELINE</div>
+      <h2 class="section-title reveal">Ten steps. Zero manual handoffs.</h2>
+      <p class="section-sub reveal">Each stage runs autonomously, logs every decision, and waits for your approval before proceeding.</p>
+
+      <div class="pipeline-explorer reveal">
+        <div class="pipeline-sidebar" id="pipelineSidebar">
+          <div class="auto-badge" id="autoBadge"><span class="auto-dot"></span> AUTO</div>
+          <div class="step-item active" data-index="0"><span class="step-num">01</span> Research Question</div>
+          <div class="step-item" data-index="1"><span class="step-num">02</span> Literature Review</div>
+          <div class="step-item" data-index="2"><span class="step-num">03</span> Research Plan</div>
+          <div class="step-item" data-index="3"><span class="step-num">04</span> Cohort Selection</div>
+          <div class="step-item" data-index="4"><span class="step-num">05</span> Segmentation &amp; Annotation</div>
+          <div class="step-item" data-index="5"><span class="step-num">06</span> Feature Extraction</div>
+          <div class="step-item" data-index="6"><span class="step-num">07</span> Model Training &amp; Evaluation</div>
+          <div class="step-item" data-index="7"><span class="step-num">08</span> Execution Summary</div>
+          <div class="step-item" data-index="8"><span class="step-num">09</span> Manuscript Generation</div>
+          <div class="step-item" data-index="9"><span class="step-num">10</span> PDF Output</div>
+        </div>
+
+        <div class="step-panel" id="stepPanel"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SAMPLE OUTPUT
+       ═══════════════════════════════════════════ -->
+  <section class="sample-section" id="demo">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label reveal">SAMPLE OUTPUT</div>
+        <h2 class="section-title reveal">From question to PDF in 53 minutes.</h2>
+        <p class="section-sub reveal" style="margin:0 auto">Chest X-ray radiomics study. 847 patients. 1,316 features. One research question in, submission-ready paper out. No manual handoffs.</p>
+      </div>
+
+      <div class="pdf-viewer reveal">
+        <div class="pdf-toolbar">
+          <span class="pdf-title">CUBE AI Output — Chest X-Ray Paper <span id="pdfDate" class="pdf-date"></span></span>
+          <div class="pdf-toolbar-right">
+            <span class="gen-time">⏱ Generated in 53 min</span>
+            <a href="assets/chest_xray_paper_v2.pdf" class="toolbar-btn" download>Download PDF</a>
+            <a href="assets/chest_xray_paper_v2.pdf" class="toolbar-btn" target="_blank">Open Full</a>
+          </div>
+        </div>
+        <div class="pdf-embed">
+          <iframe src="assets/chest_xray_paper_v2.pdf" style="width:100%; height:520px; border:none;" title="Chest X-Ray Research Paper"></iframe>
+        </div>
+      </div>
+      <a href="assets/chest_xray_paper_v2.pdf" class="pdf-read-more" download>Download Full Paper</a>
+
+      <div class="sample-stats reveal">
+        <span class="sample-stat">847 Patients Analyzed</span>
+        <span class="sample-stat">1,316 Features Extracted</span>
+        <span class="sample-stat">AUC 0.847</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FEATURES
+       ═══════════════════════════════════════════ -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-label reveal">CAPABILITIES</div>
+      <h2 class="section-title reveal">Autonomous research, built for clinical standards.</h2>
+
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+          </svg>
+          <h3>Patient data stays on-premise</h3>
+          <p>Raw images and identifiers never leave your institutional environment. Only anonymized, aggregated features reach the language model layer.</p>
+        </div>
+        <div class="feature-card reveal" data-delay="80">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M15 15l-2 5L9 9l11 4-5 2z"/><path d="M18.5 18.5L22 22"/>
+          </svg>
+          <h3>Full human oversight</h3>
+          <p>Every stage is reviewable and interruptible. Approve the plan, validate segmentations, confirm cohorts. You decide when the pipeline proceeds.</p>
+        </div>
+        <div class="feature-card reveal" data-delay="160">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+          </svg>
+          <h3>1,316 IBSI-standardized features</h3>
+          <p>PyRadiomics extracts features across all IBSI classes — first-order, shape, GLCM, GLRLM, GLSZM, NGTDM, wavelet, LoG — with full reproducibility documentation.</p>
+        </div>
+        <div class="feature-card reveal">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/>
+          </svg>
+          <h3>Foundational model segmentation</h3>
+          <p>SAM2, VISTA-3D, and nnInteractive provide sub-millimeter lesion segmentation with point-click and bounding-box correction in an OHIF-integrated viewer.</p>
+        </div>
+        <div class="feature-card reveal" data-delay="80">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
+          </svg>
+          <h3>Reproducible by design</h3>
+          <p>Every agent action is logged with timestamps, content hashes, and input/output records. Any result can be independently verified from the audit trail.</p>
+        </div>
+        <div class="feature-card reveal" data-delay="160">
+          <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+          <h3>LaTeX manuscript output</h3>
+          <p>The Reporting Agent writes a structured academic manuscript in native LaTeX, compiled to a submission-ready PDF with every numerical claim traceable to source data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       HOW IT WORKS
+       ═══════════════════════════════════════════ -->
+  <section class="how-section" id="how-it-works">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label reveal">HOW IT WORKS</div>
+        <h2 class="section-title reveal">Three inputs. One pipeline. Full paper.</h2>
+      </div>
+
+      <div class="how-grid reveal">
+        <div class="how-step">
+          <div class="how-step-num">1</div>
+          <h3>Ask your question</h3>
+          <p>State your research hypothesis in plain language. The Planning Agent decomposes it into a structured, stage-by-stage research plan and presents it for your review and approval.</p>
+        </div>
+        <div class="how-arrow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">2</div>
+          <h3>Supervise the pipeline</h3>
+          <p>Monitor autonomous execution in real time via the Playground. Every agent action is visible. Intervene, adjust, or approve at any stage.</p>
+        </div>
+        <div class="how-arrow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">3</div>
+          <h3>Receive your manuscript</h3>
+          <p>Download a complete, formatted academic manuscript in PDF. Every result is traceable, every decision is logged, and the entire pipeline is reproducible.</p>
+        </div>
+      </div>
+
+      <div class="how-summary reveal">
+        The entire pipeline — from research question to downloadable manuscript — completes in <strong>under 60 minutes</strong>. The science is yours. The process is ours.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       EARLY ACCESS FORM
+       ═══════════════════════════════════════════ -->
+  <section class="access-section" id="early-access">
+    <div class="container">
+      <div class="access-inner">
+        <div class="section-label reveal">EARLY ACCESS</div>
+        <h2 class="section-title reveal">Apply for early access.</h2>
+        <p class="section-sub reveal" style="margin:0 auto 0">We are onboarding a limited cohort of radiology researchers, clinical AI teams, and institutions. Priority is given to teams with active retrospective imaging studies.</p>
+
+        <form class="access-form reveal" id="accessForm" novalidate>
+          <div class="form-group">
+            <label for="fa-name">Full Name *</label>
+            <input type="text" id="fa-name" name="name" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="fa-email">Institutional Email *</label>
+            <input type="email" id="fa-email" name="email" required autocomplete="email" />
+            <div class="form-warning" id="emailWarning">Please use your institutional email address.</div>
+          </div>
+          <div class="form-group">
+            <label for="fa-institution">Institution / Hospital *</label>
+            <input type="text" id="fa-institution" name="institution" required autocomplete="organization" />
+          </div>
+          <div class="form-group">
+            <label for="fa-role">Role *</label>
+            <select id="fa-role" name="role" required>
+              <option value="" disabled selected>Select your role</option>
+              <option>Radiologist</option>
+              <option>Radiology Researcher</option>
+              <option>Clinical AI Researcher</option>
+              <option>Medical Physicist</option>
+              <option>Data Scientist (Medical)</option>
+              <option>Institution Admin</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="fa-research">Research Area (optional)</label>
+            <textarea id="fa-research" name="research" rows="3" placeholder="Briefly describe your research focus or the type of study you would use CUBE AI for..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="fa-source">How did you hear about CUBE AI? (optional)</label>
+            <select id="fa-source" name="source">
+              <option value="" disabled selected>Select an option</option>
+              <option>Conference</option>
+              <option>Colleague</option>
+              <option>LinkedIn</option>
+              <option>Search</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <span class="btn-text">Request Early Access</span>
+            <span class="spinner-sm"></span>
+          </button>
+          <div class="form-footer">
+            We review applications within 5 business days.<br />
+            Your data is handled in accordance with GDPR and HIPAA guidelines.
+          </div>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <svg class="success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+          <h3>Application Received</h3>
+          <p>Thank you. We will review your application and respond to your email within 5 business days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       TRUST & CREDIBILITY
+       ═══════════════════════════════════════════ -->
+  <section class="trust-section" id="trust">
+    <div class="container">
+      <h2 class="section-title reveal" style="text-align:center">Verified pipeline. Clinical-grade standards.</h2>
+
+      <div class="trust-grid reveal">
+        <div class="trust-card">
+          <h3>HIPAA &amp; GDPR Aligned</h3>
+          <p>Patient data handling follows clinical data governance standards. No raw patient images or identifiers are processed by language models.</p>
+        </div>
+        <div class="trust-card">
+          <h3>Fully Auditable Pipeline</h3>
+          <p>Every agent action is logged with content hashes and timestamps. Full reproducibility documentation is generated alongside every manuscript.</p>
+        </div>
+        <div class="trust-card">
+          <h3>Built on Validated Tools</h3>
+          <p>CUBE AI's pipeline is built on PyRadiomics, OHIF, SAM2, and XGBoost — peer-validated tools trusted by the clinical research community.</p>
+        </div>
+      </div>
+
+      <div class="trust-strip reveal">
+        CUBE AI is in active development. We are working with an initial cohort of institutions to validate pipeline outputs against manual research standards.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       AFFILIATIONS & SUPPORTERS
+       ═══════════════════════════════════════════ -->
+  <section class="affiliations-section" id="affiliations">
+    <div class="container">
+      <div class="section-label reveal">BACKED BY</div>
+      <h2 class="section-title reveal">Affiliated institutions and supporters.</h2>
+      <p class="section-sub reveal">CUBE AI is developed at Cairo University's Faculty of Engineering with support from academic and funding partners.</p>
+
+      <!-- Academic Institutions -->
+      <div class="affil-sub-label reveal" style="margin-top:40px">ACADEMIC INSTITUTIONS</div>
+      <div class="logo-row cols-2">
+        <div class="logo-card reveal">
+          <div class="img-skeleton skeleton">
+            <img src="assets/Cairo_University_logo.png" alt="Cairo University — Faculty of Engineering" style="max-height:80px; max-width:160px; object-fit:contain;" onload="this.parentElement.classList.remove('skeleton')" onerror="this.style.opacity='0.3'" />
+            <div class="shimmer">Loading...</div>
+          </div>
+          <div class="logo-label">Cairo University<br/>Faculty of Engineering</div>
+        </div>
+        <div class="logo-card reveal" data-delay="100">
+          <div class="img-skeleton skeleton">
+            <img src="assets/ainshams_logopng.png" alt="Ain Shams University" style="max-height:80px; max-width:160px; object-fit:contain;" onload="this.parentElement.classList.remove('skeleton')" onerror="this.style.opacity='0.3'" />
+            <div class="shimmer">Loading...</div>
+          </div>
+          <div class="logo-label">Ain Shams University<br/>Clinical Research Partner</div>
+        </div>
+      </div>
+
+      <hr class="affil-divider" />
+
+      <!-- Funding & Recognition -->
+      <div class="affil-sub-label reveal">FUNDING &amp; RECOGNITION</div>
+      <div class="logo-row cols-3">
+        <div class="logo-card reveal" data-delay="200">
+          <div class="img-skeleton skeleton">
+            <img src="assets/ISF_logo.png" alt="Innovators Support Fund" style="max-height:70px; max-width:140px; object-fit:contain;" onload="this.parentElement.classList.remove('skeleton')" onerror="this.style.opacity='0.3'" />
+            <div class="shimmer">Loading...</div>
+          </div>
+          <div class="logo-label">Innovators Support Fund</div>
+        </div>
+        <div class="logo-card reveal" data-delay="300">
+          <div class="img-skeleton skeleton">
+            <img src="assets/MICCAI_logo.png" alt="MICCAI 2026" style="max-height:70px; max-width:140px; object-fit:contain;" onload="this.parentElement.classList.remove('skeleton')" onerror="this.style.opacity='0.3'" />
+            <div class="shimmer">Loading...</div>
+          </div>
+          <div class="logo-label">MICCAI 2026</div>
+        </div>
+        <div class="logo-card reveal" data-delay="400">
+          <div class="img-skeleton skeleton">
+            <img src="assets/CLiMeM_MICCAI_Workshop_logo.png" alt="CLiMeM MICCAI Workshop" style="max-height:70px; max-width:140px; object-fit:contain;" onload="this.parentElement.classList.remove('skeleton')" onerror="this.style.opacity='0.3'" />
+            <div class="shimmer">Loading...</div>
+          </div>
+          <div class="logo-label">CLiMeM Workshop</div>
+        </div>
+      </div>
+
+      <!-- Highlight Strip -->
+      <div class="affil-strip reveal">
+        <div class="affil-strip-left">
+          <div class="affil-strip-dot"></div>
+          <div class="affil-strip-text">CUBE AI was presented at a national radiology conference and is actively used by radiologists in a clinical research setting.</div>
+        </div>
+        <div class="affil-strip-badge">ISF Funded · MICCAI 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       RESEARCH CREDENTIALS
+       ═══════════════════════════════════════════ -->
+  <section class="research-section" id="research">
+    <div class="container">
+      <div class="section-label reveal">IN THE FIELD</div>
+      <h2 class="section-title reveal">Validated by the clinical research community.</h2>
+
+      <div class="research-grid">
+        <!-- Left: Credential cards -->
+        <div class="cred-stack">
+          <div class="cred-card reveal">
+            <div class="cred-label">CONFERENCE</div>
+            <h3>Radiology Conference Presentation</h3>
+            <p>CUBE AI was demonstrated to clinical radiologists and researchers at a national radiology conference, receiving validation of the pipeline approach from practicing clinicians.</p>
+            <div class="img-skeleton skeleton">
+              <img class="cred-img" src="assets/CUBE_AI_In_Radiology_Conference.jpg" alt="CUBE AI presented at radiology conference" onload="this.parentElement.classList.remove('skeleton')" onerror="this.style.opacity='0.3'" />
+              <div class="shimmer">Loading...</div>
+            </div>
+          </div>
+          <div class="cred-card reveal" data-delay="150">
+            <div class="cred-label">CLINICAL USE</div>
+            <h3>Radiologists Using CUBE AI</h3>
+            <p>Practicing radiologists have tested the CUBE AI platform in a hands-on setting, validating the interface design and pipeline output against real clinical research workflows.</p>
+            <div class="img-skeleton skeleton">
+              <img class="cred-img" src="assets/radiologists_use_cube_ai.jpg" alt="Radiologists using CUBE AI in a clinical demo setting" onload="this.parentElement.classList.remove('skeleton')" onerror="this.style.opacity='0.3'" />
+              <div class="shimmer">Loading...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       TEAM
+       ═══════════════════════════════════════════ -->
+  <section class="team-section" id="team">
+    <div class="container">
+      <div class="section-label reveal">THE TEAM</div>
+      <h2 class="section-title reveal">The people building CUBE AI.</h2>
+      <p class="section-sub reveal">A multidisciplinary team from Cairo University's Faculty of Engineering, combining expertise in medical imaging, AI research, and clinical systems.</p>
+
+      <!-- Part 1: Team Photo -->
+      <div class="team-photo-block reveal" style="margin-top:40px">
+        <div class="img-skeleton skeleton">
+          <img src="assets/the_team.png" alt="The CUBE AI development team" onload="this.parentElement.classList.remove('skeleton')" onerror="this.style.opacity='0.3'" />
+          <div class="shimmer">Loading...</div>
+        </div>
+      </div>
+      <p class="team-caption reveal">The CUBE AI team — Faculty of Engineering, Cairo University</p>
+
+      <!-- Part 2: Two-column photos -->
+      <div class="team-two-col">
+        <div class="reveal" data-delay="100">
+          <div class="team-two-col-label">DEVELOPMENT TEAM</div>
+          <div class="img-skeleton skeleton">
+            <img src="assets/group_photo_team.jpg" alt="CUBE AI development team group photo" onload="this.parentElement.classList.remove('skeleton')" onerror="this.style.opacity='0.3'" />
+            <div class="shimmer">Loading...</div>
+          </div>
+        </div>
+        <div class="reveal" data-delay="100">
+          <div class="team-two-col-label">ACADEMIC SUPERVISION</div>
+          <div class="img-skeleton skeleton">
+            <img src="assets/supervisors.png" alt="CUBE AI project supervisors and faculty advisors" onload="this.parentElement.classList.remove('skeleton')" onerror="this.style.opacity='0.3'" />
+            <div class="shimmer">Loading...</div>
+          </div>
+          <h3>Academic Supervisors</h3>
+          <p>CUBE AI is developed under academic supervision from the Systems and Biomedical Engineering Department, Faculty of Engineering, Cairo University.</p>
+        </div>
+      </div>
+
+      <!-- Part 3: Affiliation Strip -->
+      <div class="team-affil-strip reveal" data-delay="200">
+        <div class="img-skeleton skeleton" style="display:inline-block">
+          <img src="assets/CUBEAI_logo.png" alt="CUBE AI" style="height:28px; object-fit:contain; " onload="this.parentElement.classList.remove('skeleton')" onerror="this.style.opacity='0.3'" />
+          <div class="shimmer"></div>
+        </div>
+        <div class="team-affil-center">Systems &amp; Biomedical Engineering · Faculty of Engineering<br/>Cairo University · Cairo, Egypt</div>
+        <div class="team-affil-pills">
+          <span class="tech-pill">ISF Funded</span>
+          <span class="tech-pill">MICCAI 2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FAQ
+       ═══════════════════════════════════════════ -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-label reveal" style="text-align:center">FAQ</div>
+      <h2 class="section-title reveal" style="text-align:center">Common questions.</h2>
+
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" aria-controls="faq-a-1">
+            What type of studies can CUBE AI handle?
+            <svg class="faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,6 8,10 12,6"/></svg>
+          </button>
+          <div class="faq-a" id="faq-a-1"><p>CUBE AI is currently optimized for retrospective radiomics studies using CT imaging. Support for MRI, PET, and prospective study designs is on the roadmap.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" aria-controls="faq-a-2">
+            Does CUBE AI require access to our PACS system?
+            <svg class="faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,6 8,10 12,6"/></svg>
+          </button>
+          <div class="faq-a" id="faq-a-2"><p>Yes. CUBE AI connects to your institutional PACS to query and retrieve imaging data. We support standard DICOM connections and DICOMweb APIs. Patient data never leaves your institution's environment.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" aria-controls="faq-a-3">
+            How is patient privacy protected?
+            <svg class="faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,6 8,10 12,6"/></svg>
+          </button>
+          <div class="faq-a" id="faq-a-3"><p>Raw patient data — including images and identifiers — is processed entirely within your institutional environment. Only anonymized, aggregated features are passed to the language model layer. No patient data is sent to external servers.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" aria-controls="faq-a-4">
+            Is the output actually publishable?
+            <svg class="faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,6 8,10 12,6"/></svg>
+          </button>
+          <div class="faq-a" id="faq-a-4"><p>The manuscript output is designed to meet the structural and methodological standards required for submission to peer-reviewed radiology journals. Researchers review, validate, and submit the output as they would any co-authored manuscript.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" aria-controls="faq-a-5">
+            What does early access include?
+            <svg class="faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,6 8,10 12,6"/></svg>
+          </button>
+          <div class="faq-a" id="faq-a-5"><p>Early access includes full pipeline access, direct support from the CUBE AI team, influence over the product roadmap, and founding institution pricing when we move to general availability.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false" aria-controls="faq-a-6">
+            How long does a full study take?
+            <svg class="faq-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,6 8,10 12,6"/></svg>
+          </button>
+          <div class="faq-a" id="faq-a-6"><p>A standard retrospective radiomics study — from hypothesis to manuscript — completes in under 60 minutes on a pre-assembled cohort. Total elapsed time depends on cohort size and PACS query speed.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <img src="assets/CUBEAI_logo.png" alt="CUBE AI" style="height:40px; object-fit:contain;" />
+            <span>Autonomous radiology research, from question to manuscript.</span>
+          </a>
+          <p class="copyright">&copy; 2025 CUBE AI. All rights reserved.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="#pipeline">Pipeline</a>
+          <a href="#features">Features</a>
+          <a href="#demo">Demo</a>
+          <a href="#demo">Sample Output</a>
+          <a href="#early-access">Early Access</a>
+        </div>
+        <div class="footer-col">
+          <h4>Research</h4>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#faq">FAQ</a>
+          <a href="#">Documentation</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <a href="#early-access">Apply for Early Access</a>
+          <a href="mailto:contact@ahmedxaldeeb.github.io">Contact</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Twitter / X</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>HIPAA Aligned &middot; GDPR Compliant &middot; IBSI-Certified Radiomics</span>
+      <span>Built for radiology research teams</span>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════
+       JAVASCRIPT
+       ═══════════════════════════════════════════ -->
   <script>
+    /* ─────────────────────────────────────────
+       HEADER SCROLL
+       ───────────────────────────────────────── */
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    /* ─────────────────────────────────────────
+       MOBILE NAV
+       ───────────────────────────────────────── */
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+      });
+    });
+
+    /* ─────────────────────────────────────────
+       HERO SLIDESHOW
+       ───────────────────────────────────────── */
     (function () {
-      const header = document.getElementById('site-header');
-      const menuToggle = document.getElementById('menu-toggle');
-      const mobileNavWrap = document.getElementById('mobile-nav-wrap');
-      const waitlistForm = document.getElementById('waitlist-form');
-      const successPanel = document.getElementById('success-panel');
-      const submitButton = document.getElementById('submit-button');
-      const formError = document.getElementById('form-error');
-      const faqItems = Array.from(document.querySelectorAll('.faq-item'));
-      const trackables = Array.from(document.querySelectorAll('.trackable'));
-      const revealItems = Array.from(document.querySelectorAll('.reveal'));
+      const slides = document.querySelectorAll('#heroSlideshow .slide');
+      if (!slides.length) return;
+      let current = 0;
+      setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 3000);
+    })();
 
-      const supportsAnalytics = () => typeof window.gtag === 'function' || Array.isArray(window.dataLayer);
+    /* ─────────────────────────────────────────
+       PIPELINE EXPLORER
+       ───────────────────────────────────────── */
+    const pipelineSteps = [
+      { num: '01', title: 'Research Question / Landing Page', gif: 'landing_page.gif', desc: 'Start with a question in plain language. CUBE AI\'s interface lets you define a research hypothesis, load prior studies, and select from available AI models — all from a single dashboard. No configuration files. No command line.', tech: ['OHIF Viewer', 'PACS Integration', 'REST API'] },
+      { num: '02', title: 'Literature Review', gif: 'literature_review.gif', desc: 'The Planning Agent queries PubMed and Semantic Scholar, retrieves relevant studies, scores each one by relevance to your hypothesis, and returns a ranked reading list. What would take a researcher two weeks takes the agent under three minutes.', tech: ['PubMed API', 'Semantic Scholar', 'LLM Ranking'] },
+      { num: '03', title: 'Research Plan', gif: 'playground_plan_steps_walkthrough.gif', desc: 'Before any data is touched, CUBE AI decomposes your hypothesis into a structured, stage-by-stage research plan. Every step — from cohort criteria to statistical method — is presented for your review. Nothing proceeds without your sign-off.', tech: ['Planning Agent', 'LLM', 'Human-in-the-Loop'] },
+      { num: '04', title: 'Cohort Selection', gif: 'Cohort_Selection_View.gif', desc: 'CUBE AI queries your PACS using the inclusion and exclusion criteria defined in the research plan. Cohort size is validated against statistical power requirements automatically (β = 0.80, α = 0.05). Patient identifiers never reach the language model layer.', tech: ['PACS Query', 'Statistical Power Analysis', 'Privacy Guard'] },
+      { num: '05', title: 'Segmentation & Annotation', gif: 'segmentation_view.gif', desc: 'Lesion segmentation runs via SAM2 and VISTA-3D foundational models directly inside an OHIF-integrated viewer. Point-click and bounding-box tools allow rapid human correction. Quality control scores are computed per case — flagging any segmentation below confidence threshold for review.', tech: ['SAM2', 'VISTA-3D', 'nnInteractive', 'OHIF'] },
+      { num: '06', title: 'Feature Extraction', gif: 'feature_extraction_view.gif', desc: 'PyRadiomics extracts 1,316 IBSI-compliant radiomic features across all standardized classes: first-order, shape, GLCM, GLRLM, GLSZM, NGTDM, wavelet, and LoG. LASSO regularization and recursive feature elimination then reduce this matrix to a small set of stable, analysis-ready predictors.', tech: ['PyRadiomics', 'IBSI', 'LASSO', 'RFE'] },
+      { num: '07', title: 'Model Training & Evaluation', gif: 'Modeling_View.gif', desc: 'An XGBoost classifier is trained under nested 5-fold cross-validation with Optuna hyperparameter tuning. Performance is reported with 95% confidence intervals via bootstrap resampling. SHAP values provide feature-level interpretability. Results are benchmarked automatically against radiologist baseline assessment.', tech: ['XGBoost', 'Optuna', 'SHAP', '5-Fold CV'] },
+      { num: '08', title: 'Execution Summary', gif: 'execution_summary.gif', desc: 'Every action taken by every agent — PACS queries, segmentation calls, feature extraction runs, model training events — is written to a tamper-evident audit log with timestamps, agent identity, and input/output content hashes. The full study is reproducible from this log alone.', tech: ['Audit Log', 'Hash Verification', 'Agent Registry'] },
+      { num: '09', title: 'Manuscript Generation', gif: 'report_view.gif', desc: 'The Reporting Agent reads the complete audit log and pipeline scratchpad, then writes a structured academic manuscript: introduction, methods, results, discussion, and references. Every numerical claim in the paper is traced to its source computation. Output is native LaTeX.', tech: ['Reporting Agent', 'LaTeX', 'PDF Compiler'] },
+      { num: '10', title: 'PDF Output', gif: 'report_view.gif', desc: 'The LaTeX manuscript is compiled to a formatted, submission-ready PDF. The final package includes the paper, a reproducibility appendix, and the full audit trail. From research question to download link: under one hour.', tech: ['LaTeX PDF', 'Reproducibility Pack', 'Submission Ready'] },
+    ];
 
-      function trackEvent(name, params) {
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', name, params || {});
-          return;
-        }
-        if (Array.isArray(window.dataLayer)) {
-          window.dataLayer.push(Object.assign({ event: name }, params || {}));
-        }
+    const stepPanel = document.getElementById('stepPanel');
+    const stepItems = document.querySelectorAll('.step-item');
+    let activeIndex = 0;
+    let autoTimer = null;
+    let autoActive = true;
+    const autoBadge = document.getElementById('autoBadge');
+    const userTimeout = 8000;
+    const autoInterval = 4000;
+
+    function renderPanel(index) {
+      const s = pipelineSteps[index];
+      stepPanel.innerHTML = `
+        <div class="gif-placeholder">
+          <img src="assets/gifs/${s.gif}" alt="${s.title}" onload="this.classList.add('loaded')" onerror="this.style.display='none'" />
+          <div class="shimmer">${s.gif}</div>
+        </div>
+        <div class="step-panel-title">${s.num} — ${s.title}</div>
+        <p class="step-panel-desc">${s.desc}</p>
+        <div class="tech-badges">${s.tech.map(t => `<span class="tech-badge">${t}</span>`).join('')}</div>
+      `;
+      stepPanel.classList.add('mobile-active');
+    }
+
+    function setActive(index) {
+      activeIndex = index;
+      stepItems.forEach((item, i) => item.classList.toggle('active', i === index));
+      renderPanel(index);
+    }
+
+    stepItems.forEach((item, i) => {
+      item.addEventListener('click', () => {
+        setActive(i);
+        pauseAutoAdvance();
+      });
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      const explorer = document.querySelector('.pipeline-explorer');
+      if (!explorer) return;
+      const rect = explorer.getBoundingClientRect();
+      if (rect.top > window.innerHeight || rect.bottom < 0) return;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        setActive(Math.min(activeIndex + 1, pipelineSteps.length - 1));
+        pauseAutoAdvance();
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        setActive(Math.max(activeIndex - 1, 0));
+        pauseAutoAdvance();
       }
+    });
 
-      function updateHeaderState() {
-        header.classList.toggle('scrolled', window.scrollY > 80);
-      }
+    function pauseAutoAdvance() {
+      autoActive = false;
+      autoBadge.classList.add('paused');
+      clearTimeout(autoTimer);
+      autoTimer = setTimeout(() => {
+        autoActive = true;
+        autoBadge.classList.remove('paused');
+        startAutoAdvance();
+      }, userTimeout);
+    }
 
-      function setMobileMenu(open) {
-        menuToggle.setAttribute('aria-expanded', String(open));
-        mobileNavWrap.classList.toggle('open', open);
-      }
+    function startAutoAdvance() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => {
+        if (!autoActive) return;
+        const next = (activeIndex + 1) % pipelineSteps.length;
+        setActive(next);
+      }, autoInterval);
+    }
 
-      function closeMobileMenu() {
-        setMobileMenu(false);
-      }
+    renderPanel(0);
+    startAutoAdvance();
 
-      function validateEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-      }
+    /* ─────────────────────────────────────────
+       PDF DATE
+       ───────────────────────────────────────── */
+    document.getElementById('pdfDate').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
-      function smoothAnchorScroll(targetId) {
-        const target = document.querySelector(targetId);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-
-      function revealOnView() {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
-
-        revealItems.forEach((item) => observer.observe(item));
-      }
-
-      function updateFaqHeight(item, open) {
-        const answer = item.querySelector('.faq-answer');
-        const button = item.querySelector('.faq-question');
-        item.classList.toggle('active', open);
-        button.setAttribute('aria-expanded', String(open));
-        answer.style.maxHeight = open ? answer.scrollHeight + 'px' : '0px';
-      }
-
-      function syncFaqHeights() {
-        faqItems.forEach((item) => {
-          if (item.classList.contains('active')) {
-            const answer = item.querySelector('.faq-answer');
-            answer.style.maxHeight = answer.scrollHeight + 'px';
-          }
+    /* ─────────────────────────────────────────
+       FAQ ACCORDION
+       ───────────────────────────────────────── */
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isActive = item.classList.contains('active');
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(fi => {
+          fi.classList.remove('active');
+          fi.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
         });
+        if (!isActive) {
+          item.classList.add('active');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    /* ─────────────────────────────────────────
+       FORM SUBMISSION
+       ───────────────────────────────────────── */
+    const form = document.getElementById('accessForm');
+    const emailInput = document.getElementById('fa-email');
+    const emailWarning = document.getElementById('emailWarning');
+    const submitBtn = document.getElementById('submitBtn');
+    const formSuccess = document.getElementById('formSuccess');
+
+    const personalDomains = ['gmail.com','hotmail.com','yahoo.com','outlook.com','live.com','aol.com','icloud.com','mail.com','protonmail.com','zoho.com'];
+
+    emailInput.addEventListener('blur', () => {
+      const val = emailInput.value.trim();
+      if (val && personalDomains.some(d => val.toLowerCase().endsWith('@' + d))) {
+        emailWarning.style.display = 'block';
+      } else {
+        emailWarning.style.display = 'none';
       }
+    });
 
-      function recordScrollDepth() {
-        if (!supportsAnalytics()) {
-          return;
-        }
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Simple validation
+      const name = form.querySelector('#fa-name').value.trim();
+      const email = form.querySelector('#fa-email').value.trim();
+      const inst = form.querySelector('#fa-institution').value.trim();
+      const role = form.querySelector('#fa-role').value;
+      if (!name || !email || !inst || !role) return;
 
-        const milestones = [25, 50, 75, 90];
-        const seen = new Set();
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
 
-        function onScroll() {
-          const scrollTop = window.scrollY || document.documentElement.scrollTop;
-          const height = document.documentElement.scrollHeight - window.innerHeight;
-          if (height <= 0) {
-            return;
-          }
-          const percent = Math.round((scrollTop / height) * 100);
-          milestones.forEach((milestone) => {
-            if (percent >= milestone && !seen.has(milestone)) {
-              seen.add(milestone);
-              trackEvent('scroll_depth', { percent: milestone });
-            }
-          });
-        }
+      /* === BACKEND INTEGRATION ===
+         Replace mock submit with POST to your endpoint.
+         Payload: { name, email, institution, role, research, source }
+         Options: Formspree, custom API, Airtable webhook
+      === END BACKEND INTEGRATION === */
 
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-      }
+      setTimeout(() => {
+        form.style.display = 'none';
+        formSuccess.classList.add('show');
+      }, 1200);
+    });
 
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener('click', (event) => {
-          const href = anchor.getAttribute('href');
-          if (!href || href === '#') {
-            return;
-          }
-
-          const target = document.querySelector(href);
-          if (target) {
-            event.preventDefault();
-            closeMobileMenu();
-            smoothAnchorScroll(href);
-            trackEvent('anchor_click', { target: href.slice(1), source: anchor.dataset.track || 'nav' });
-          }
-        });
-      });
-
-      trackables.forEach((item) => {
-        item.addEventListener('click', () => {
-          trackEvent('cta_click', { name: item.dataset.track || 'cta' });
-        });
-      });
-
-      menuToggle.addEventListener('click', () => {
-        const open = menuToggle.getAttribute('aria-expanded') !== 'true';
-        setMobileMenu(open);
-      });
-
-      faqItems.forEach((item) => {
-        const button = item.querySelector('.faq-question');
-        button.addEventListener('click', () => {
-          const isOpen = item.classList.contains('active');
-          faqItems.forEach((other) => {
-            if (other !== item) {
-              updateFaqHeight(other, false);
-            }
-          });
-          updateFaqHeight(item, !isOpen);
-        });
-      });
-
-      waitlistForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        formError.textContent = '';
-
-        const formData = new FormData(waitlistForm);
-        const name = String(formData.get('name') || '').trim();
-        const email = String(formData.get('email') || '').trim();
-        const company = String(formData.get('company') || '').trim();
-        const role = String(formData.get('role') || '').trim();
-
-        if (!name) {
-          formError.textContent = 'Please enter your full name.';
-          return;
-        }
-
-        if (!email || !validateEmail(email)) {
-          formError.textContent = 'Please enter a valid email address.';
-          return;
-        }
-
-        submitButton.disabled = true;
-        const originalText = submitButton.textContent;
-        submitButton.textContent = 'Joining...';
-
-        try {
-          /* === BACKEND INTEGRATION ===
-             Replace the mock submit below with your real endpoint.
-             Options: Formspree (https://formspree.io), Netlify Forms,
-             or a custom POST to your API.
-             Expected payload: { name, email, company, role }
-          === END BACKEND INTEGRATION === */
-          await new Promise((resolve) => setTimeout(resolve, 750));
-
-          trackEvent('waitlist_submit_success', { has_company: Boolean(company), role: role || 'unspecified' });
-          waitlistForm.style.display = 'none';
-          successPanel.classList.add('visible-success');
-        } catch (error) {
-          formError.textContent = 'Something went wrong. Please try again in a moment.';
-          submitButton.disabled = false;
-          submitButton.textContent = originalText;
-          trackEvent('waitlist_submit_error', { message: String(error && error.message ? error.message : 'submit_failed') });
+    /* ─────────────────────────────────────────
+       INTERSECTION OBSERVER — REVEAL
+       ───────────────────────────────────────── */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = parseInt(entry.target.dataset.delay) || 0;
+          setTimeout(() => entry.target.classList.add('visible'), delay);
+          revealObserver.unobserve(entry.target);
         }
       });
+    }, { threshold: 0.1 });
 
-      window.addEventListener('scroll', updateHeaderState, { passive: true });
-      window.addEventListener('resize', syncFaqHeights);
-      document.addEventListener('click', (event) => {
-        if (!mobileNavWrap.contains(event.target) && !menuToggle.contains(event.target)) {
-          closeMobileMenu();
-        }
-      });
-
-      revealOnView();
-      updateHeaderState();
-      recordScrollDepth();
-      syncFaqHeights();
-    }());
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   </script>
 </body>
 </html>
